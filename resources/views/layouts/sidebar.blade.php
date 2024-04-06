@@ -4,7 +4,7 @@
             <span class="app-brand-logo demo">
                 <img src="{{asset('login_assets/img/hslogo.png')}}" alt="" width="25" height="25" class="my-3">
             </span>
-            <span class="app-brand-text demo menu-text fw-bolder ms-2"> HealthSpace</span>
+            <span class="app-brand-text demo menu-text fw-bolder ms-2"> Health Space</span>
         </a>
 
         <a href="{{url('/')}}" class="layout-menu-toggle menu-link text-large ms-auto d-block d-xl-none">
