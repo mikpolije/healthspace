@@ -99,7 +99,7 @@
                                         <i class="bx bx-dots-vertical-rounded fs-4"></i>
                                     </button>
                                     <div class="dropdown-menu dropdown-menu-end" aria-labelledby="chat-header-actions">
-                                        <a class="dropdown-item" href="javascript:void(0);">Berikan Catatan</a>
+                                        <a class="dropdown-item" href="javascript:void(0);"  onclick="catatanChat()">Berikan Catatan</a>
                                         <a class="dropdown-item" href="javascript:void(0);">Berikan Resep</a>
                                         <a class="dropdown-item" href="javascript:void(0);" onclick="endChat()">End Chat Konsultasi</a>
                                     </div>
@@ -210,7 +210,7 @@
                 <div class="d-flex overflow-hidden">
                     <div class="chat-message-wrapper flex-grow-1">
                         <div class="chat-message-text ${data.type == 'end chat' ? 'bg-secondary' : ''}">
-                            <p class="mb-0  ${data.type == 'end chat' ? 'font-italic text-white' : ''}">${data.isi_chat}</p>
+                            <p class="mb-0  ${data.type == 'end chat' ? 'fst-italic text-white' : ''}">${data.isi_chat}</p>
                         </div>
                         <div class="text-end text-muted mt-1">
                             <i class="bx bx-check-double text-success"></i>
@@ -274,18 +274,19 @@
         let data = await axios.get(`{{url('dokter/getchat')}}/${id}`)
             .then((res) => {
                 $(".message-actions").html(`  
-                                <button class="btn btn-primary d-flex send-msg-btn">
-                                    <i class="bx bx-paper-plane me-md-1 me-0"></i>
-                                    <span class="align-middle d-md-inline-block d-none">Send</span>
+@ -280,6 +280,11 @@ class="rounded-circle border" data-bs-toggle="sidebar" data-overlay=""
                                 </button>`)
                     $(".message-input").prop('disabled',false)
                 $(".chat-history").empty()
+                if(res.data.status_konsul){
+                    $("#active_chat .chat-contact-info .user-status").html(`<span class="badge bg-success">Sesi Konsultasi Berlangsung</span>`);
+                }else{
+                    $("#active_chat .chat-contact-info .user-status").html(`<span class="badge bg-danger">Tidak Ada Sesi Konsultasi</span>`);
+                }
                 res.data.chats.forEach((cat)=>{
                     if(cat.to_id == id_to){
                         $(".chat-history").append(my_mee(cat))
-                    }else{
-                        $(".chat-history").append(see_mess(cat))
-                    }
+@ -289,53 +294,54 @@
                 })
 
                 i.scrollTo(0, i.scrollHeight)
@@ -309,6 +310,7 @@
             isi_chat: 'Sesi Konsultasi Telah Berahir'
         })
         .then(res=>{
+            $("#active_chat .chat-contact-info .user-status").html(`<span class="badge bg-danger">Tidak Ada Sesi Konsultasi</span>`);
             if(res.data.status_konsul != false){
                 $(".chat-history").append(`
                     <li class="chat-message chat-message-right">
