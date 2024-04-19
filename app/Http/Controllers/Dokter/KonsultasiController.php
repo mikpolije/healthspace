@@ -9,12 +9,14 @@ use Pusher\Pusher;
 use App\Models\Konsul;
 use App\Models\Dokter;
 use App\Models\Pasien;
+use App\Models\icds;
+use DB;
 
 class KonsultasiController extends Controller
 {
     public function index()
     {
-
+        $icds = icds::all();
         $konsul = Konsul::where([
             'dokter_id'=> auth()->user()->id
         ])
@@ -25,7 +27,7 @@ class KonsultasiController extends Controller
         ->select('pasiens.*','users.nama','users.profil')
         ->get();
 
-        return view('dokter.konsultasi',compact('pasien'));
+        return view('dokter.konsultasi',compact('pasien','icds'));
     }
 
     public function sendChat(Request  $request)
@@ -109,8 +111,40 @@ class KonsultasiController extends Controller
         $status_konsul = Konsul::where('pasien_id',$user_id)->where('dokter_id',$my_id)->where('status_konsultasi','start')->first();
 
         return response()->json([
-             'status_konsul'=> $status_konsul ? true : false,
+            'status_konsul'=> $status_konsul ? true : false,
+            'chats'=>$messages
         ]);
+    }
+
+    public function kirimCatatan(Request $request)
+    {
+        return response()->json($request->all());
+    }
+
+    public function getIcds(Request $request)
+    {
+        if ($request->ajax())
+                {
+                    $page = $request->page;
+                    $resultCount = 25;
+
+                    $offset = ($page - 1) * $resultCount;
+
+                    $breeds = icds::where('name_en', 'LIKE',  '%' . $request->term. '%')->orderBy('name_en')->skip($offset)->take($resultCount)->get();
+
+                    $count = icds::count();
+                    $endCount = $offset + $resultCount;
+                    $morePages = $endCount > $count;
+
+                    $results = array(
+                    "results" => $breeds,
+                    "pagination" => array(
+                        "more" => $morePages
+                    )
+                    );
+
+                    return response()->json($results);
+                }
     }
 
 

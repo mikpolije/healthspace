@@ -86,6 +86,7 @@ Route::middleware(['role:dokter'])->group(function () {
       
         Route::get('dashboard', [DashboardDokterController::class, 'index']);
         Route::get('konsultasi', [KonsultasiDokterController::class, 'index']);
+        Route::post('konsultasi/catatan', [KonsultasiDokterController::class, 'kirimCatatan']);
 
         Route::post('sendchat',[KonsultasiDokterController::class,'sendChat']);
         Route::get('getchat/{id}',[KonsultasiDokterController::class,'getChat']);
@@ -96,6 +97,7 @@ Route::middleware(['role:dokter'])->group(function () {
 
 
         Route::get('diagnosa-resep', [ChatKonsultasiController::class, 'konsultasi']);
+        Route::get('geticds',[KonsultasiDokterController::class,'getIcds']);
 
 
     });

@@ -16,8 +16,8 @@ return new class extends Migration
         Schema::create('catatan_dokters', function (Blueprint $table) {
             $table->id();
             $table->foreignId('konsul_id')->constrained();
-            $table->string('gejala');
-            $table->string('saran');
+            $table->text('gejala');
+            $table->text('saran');
             $table->string('diagnosa');
             $table->timestamps();
         });

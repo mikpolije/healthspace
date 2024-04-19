@@ -1,6 +1,12 @@
-@ -1,125 +1,125 @@
 @extends('layouts.main')
-
+@push('css')
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" />
+<link rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/select2-bootstrap-5-theme@1.3.0/dist/select2-bootstrap-5-theme.min.css" />
+<!-- Or for RTL support -->
+<link rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/select2-bootstrap-5-theme@1.3.0/dist/select2-bootstrap-5-theme.rtl.min.css" />
+@endpush
 @section('content')
 
 <div class="container-xxl flex-grow-1 container-p-y">
@@ -8,7 +14,7 @@
 
     <div class="app-chat overflow-hidden card">
         <div class="row g-0">
-           
+
 
             <!-- Chat & Contacts -->
             <div class="col app-chat-contacts app-sidebar flex-grow-0 overflow-hidden border-end"
@@ -26,7 +32,8 @@
                         </div>
                     </div>
                     <i class="bx bx-x cursor-pointer position-absolute top-0 end-0 mt-2 me-1 fs-4 d-lg-none d-block"
-                        data-overlay="" data-bs-toggle="sidebar" data-target="#app-chat-contacts" onclick="closecontact()"></i>
+                        data-overlay="" data-bs-toggle="sidebar" data-target="#app-chat-contacts"
+                        onclick="closecontact()"></i>
                 </div>
                 <hr class="container-m-nx mt-3 mb-0">
                 <div class="sidebar-body ps ps--active-y">
@@ -48,7 +55,8 @@
                                 </div>
                                 <div class="chat-contact-info flex-grow-1 ms-3">
                                     <h6 class="chat-contact-name text-truncate m-0">{{$d->nama}}</h6>
-                                    <p class="chat-contact-status text-truncate mb-0 text-muted">{{$d->jenis_kelamin}}</p>
+                                    <p class="chat-contact-status text-truncate mb-0 text-muted">{{$d->jenis_kelamin}}
+                                    </p>
                                 </div>
                                 <small class="text-muted mb-auto">5 Minutes</small>
                             </a>
@@ -100,9 +108,11 @@
                                         <i class="bx bx-dots-vertical-rounded fs-4"></i>
                                     </button>
                                     <div class="dropdown-menu dropdown-menu-end" aria-labelledby="chat-header-actions">
-                                        <a class="dropdown-item" href="javascript:void(0);"  onclick="catatanChat()">Berikan Catatan</a>
+                                        <a class="dropdown-item" href="javascript:void(0);"
+                                            onclick="catatanChat()">Berikan Catatan</a>
                                         <a class="dropdown-item" href="javascript:void(0);">Berikan Resep</a>
-                                        <a class="dropdown-item" href="javascript:void(0);" onclick="endChat()">End Chat Konsultasi</a>
+                                        <a class="dropdown-item" href="javascript:void(0);" onclick="endChat()">End Chat
+                                            Konsultasi</a>
                                     </div>
                                 </div>
                             </div>
@@ -124,7 +134,10 @@
                                 <label for="attach-doc" class="form-label mb-0">
                                     <i class="bx bx-paperclip bx-sm cursor-pointer mx-3 text-body"></i>
                                     <input type="file" id="attach-doc" hidden="">
-@ -130,212 +130,218 @@
+                                </label> -->
+
+                            </div>
+                        </form>
                     </div>
                 </div>
             </div>
@@ -134,211 +147,81 @@
         </div>
     </div>
 
+    <!-- Catatan Chat -->
+    <div class="modal fade" id="catatanModal" aria-labelledby="catatanModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="catatanModalLabel">Catatan Dokter</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label for="">Gejala</label>
+                        <textarea name="gejala" class="form-control"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="">Saran</label>
+                        <textarea name="saran" class="form-control"></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="">Diagnosis</label>
+                        <select class="form-select" id="single-select-field" data-placeholder="Choose one thing">
+
+                        </select>
+                    </div>
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary" onclick="kirimCatatan()">Kirim</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Catatan Chat -->
+
+    <!-- Resep Chat -->
+    <div class="modal fade" id="resepModal" aria-labelledby="resepModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="resepModalLabel">Catatan Dokter</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label for="">Gejala</label>
+                        <textarea name="gejala" class="form-control"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="">Saran</label>
+                        <textarea name="saran" class="form-control"></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="">Diagnosis</label>
+                        <select class="form-select" id="single-select-field2" data-placeholder="Choose one thing">
+
+                        </select>
+                    </div>
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary">Kirim</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Resep Chat -->
+
+
 
 </div>
 @endsection
 
 @push('js')
-<script src="https://js.pusher.com/8.0.1/pusher.min.js"></script>
-<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-<script src="{{asset('admin_theme/assets/vendor/js/app-chat.js')}}"></script>
-<script>
-    let id_saya = "{{auth()->user()->id}}"
-    let id_to = "";
-    let input_message = $(".message-input");
-    let i = document.querySelector(".chat-history-body");
-
-    $(document).ready(function () {
-
-        Pusher.logToConsole = true;
-
-        var pusher = new Pusher('84d89372bac06830ab70', {
-            cluster: 'ap1',
-            forceTLS: true
-        });
-        var channel = pusher.subscribe('my-channel');
-        channel.bind('my-event', function (data) {
-            if (id_saya == data.to && id_to == data.from) {
-                $(".chat-history").append(see_mess(data.isi_chat))
-                i.scrollTo(0, i.scrollHeight)
-            }
-        })
-    });
-
-
-
-
-    $(".form-send-message").on('submit', (e) => {
-        e.preventDefault()
-        axios.post("{{url('dokter/sendchat')}}", {
-            to: id_to,
-            isi_chat: input_message.val()
-        });
-        $(".chat-history").append(`
-        <li class="chat-message chat-message-right">
-                <div class="d-flex overflow-hidden">
-                    <div class="chat-message-wrapper flex-grow-1">
-                        <div class="chat-message-text">
-                            <p class="mb-0">${input_message.val()}</p>
-                        </div>
-                        <div class="text-end text-muted mt-1">
-                            <i class="bx bx-check-double text-success"></i>
-                            <small>a go</small>
-                        </div>
-                    </div>
-                    <div class="user-avatar flex-shrink-0 ms-3">
-                        <div class="avatar avatar-sm">
-                            <img src="http://127.0.0.1:8000/admin_theme/assets/img/avatars/1.png" alt="Avatar" class="rounded-circle">
-                        </div>
-                    </div>
-                </div>
-            </li>
-
-        `)
-
-        i.scrollTo(0, i.scrollHeight)
-        input_message.val('')
-
-    });
-
-    let my_mee = (data)=>{
-        let my_mee =  
-        `
-        <li class="chat-message chat-message-right">
-                <div class="d-flex overflow-hidden">
-                    <div class="chat-message-wrapper flex-grow-1">
-                        <div class="chat-message-text ${data.type == 'end chat' ? 'bg-secondary' : ''}">
-                            <p class="mb-0  ${data.type == 'end chat' ? 'fst-italic text-white' : ''}">${data.isi_chat}</p>
-                        </div>
-                        <div class="text-end text-muted mt-1">
-                            <i class="bx bx-check-double text-success"></i>
-                            <small>${timeAgo(data.created_at)}</small>
-                        </div>
-                    </div>
-                    <div class="user-avatar flex-shrink-0 ms-3">
-                        <div class="avatar avatar-sm">
-                            <img src="http://127.0.0.1:8000/admin_theme/assets/img/avatars/1.png" alt="Avatar" class="rounded-circle">
-                        </div>
-                    </div>
-                </div>
-            </li>
-        `;
-
-        return my_mee;
-    }
-
-
-    let see_mess = (data) => {
-        let mess = `
-             <li class="chat-message">
-                    <div class="d-flex overflow-hidden">
-                        <div class="user-avatar flex-shrink-0 me-3">
-                            <div class="avatar avatar-sm">
-                                <img src="{{asset('admin_theme')}}/assets/img/avatars/5.png" alt="Avatar"
-                                    class="rounded-circle">
-                            </div>
-                        </div>
-                        <div class="chat-message-wrapper flex-grow-1">
-                            <div class="chat-message-text">
-                                <p class="mb-0">${data.isi_chat}</p>
-                            </div>
-                            <div class="text-muted mt-1">
-                                <small>${timeAgo(data.created_at)}</small>
-                            </div>
-                        </div>
-                    </div>
-                </li>
-        `
-        return mess;
-    }
-
-    let pilihdokter = async (data, el) => {
-        $(".chat-contact-list-item").removeClass('active')
-        $(el).addClass('active')
-
-        let profil = `{{asset('profil')}}/${data.profil}`
-        id_to = data.user_id
-        $("#active_chat .avatar").html(` <img src="${profil}" alt="Avatar"
-                                        class="rounded-circle border" data-bs-toggle="sidebar" data-overlay=""
-                                        data-target="#app-chat-sidebar-right"> `)
-
-        $("#active_chat .chat-contact-info").html(`  <h6 class="m-0">${data.nama}</h6>
-                                    <small class="user-status text-muted">${data.nama_poli}</small>  `)
-        await getChat(data.user_id)
-
-    }
-
-    let getChat = async (id) => {
-        let data = await axios.get(`{{url('dokter/getchat')}}/${id}`)
-            .then((res) => {
-                $(".message-actions").html(`  
-                                <button class="btn btn-primary d-flex send-msg-btn">
-                                    <i class="bx bx-paper-plane me-md-1 me-0"></i>
-                                    <span class="align-middle d-md-inline-block d-none">Send</span>
-                                </button>`)
-                    $(".message-input").prop('disabled',false)
-                $(".chat-history").empty()
-                if(res.data.status_konsul){
-                    $("#active_chat .chat-contact-info .user-status").html(`<span class="badge bg-success">Sesi Konsultasi Berlangsung</span>`);
-                }else{
-                    $("#active_chat .chat-contact-info .user-status").html(`<span class="badge bg-danger">Tidak Ada Sesi Konsultasi</span>`);
-                }
-                res.data.chats.forEach((cat)=>{
-                    if(cat.to_id == id_to){
-                        $(".chat-history").append(my_mee(cat))
-                    }else{
-                        $(".chat-history").append(see_mess(cat))
-                    }
-                })
-
-                i.scrollTo(0, i.scrollHeight)
-
-            })
-        return data;
-    }
-
-    let showcontact = ()=>{
-        $(".app-chat-contacts").addClass('show')
-    }
-
-    let closecontact = ()=>{
-        $(".app-chat-contacts").removeClass('show')
-    }
-
-    let endChat = ()=>{
-        axios.post("{{url('dokter/sendchat')}}", {
-            to: id_to,
-            type : 'end chat',
-            isi_chat: 'Sesi Konsultasi Telah Berahir'
-        })
-        .then(res=>{
-            $("#active_chat .chat-contact-info .user-status").html(`<span class="badge bg-danger">Tidak Ada Sesi Konsultasi</span>`);
-            if(res.data.status_konsul != false){
-                $(".chat-history").append(`
-                    <li class="chat-message chat-message-right">
-                            <div class="d-flex overflow-hidden">
-                                <div class="chat-message-wrapper flex-grow-1">
-                                    <div class="chat-message-text bg-secondary">
-                                        <p class="mb-0 font-italic text-white">Sesi Telah Berahir</p>
-                                    </div>
-                                    <div class="text-end text-muted mt-1">
-                                        <i class="bx bx-check-double text-success"></i>
-                                        <small>a go</small>
-                                    </div>
-                                </div>
-                                <div class="user-avatar flex-shrink-0 ms-3">
-                                    <div class="avatar avatar-sm">
-                                        <img src="http://127.0.0.1:8000/admin_theme/assets/img/avatars/1.png" alt="Avatar" class="rounded-circle">
-                                    </div>
-                                </div>
-                            </div>
-                        </li>
-
-                    `)
-            }
-        })
-        i.scrollTo(0, i.scrollHeight)
-    }
-
-</script>
+@include('dokter.konsultasi_script')
 @endpush
