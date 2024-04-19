@@ -9,6 +9,7 @@ use App\Models\Pembayaran;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Str;
 
 class PasienController extends Controller
@@ -142,11 +143,44 @@ public function notification_payment(Request $request){
                 'metode_pembayaran'=>$notification->va_numbers[0]->bank
 
             ]);
-            Konsul::where('id',$p->konsul_id)->first()->update([
+            $k = Konsul::where('id',$p->konsul_id)->first();
+            $k->update([
                 'status_konsultasi'=>'start'
             ]);
             // dd($notification);
             // return $p;
+            $pasiens =User::where('id',$k->pasien_id)->first();
+            $dokters =User::where('id',$k->dokter_id)->first();
+
+            $pasien =$pasiens->nama ;
+            $email_pasien = $pasiens->email;
+            $data = [
+                'name' => $pasien,
+                'body' => "Kepada Pasien : $pasien. ",
+              
+           
+            ];
+        
+            Mail::send('email.notif_pasien', $data, function ($message) use ($pasien, $email_pasien) {
+        
+        
+                $message->to($email_pasien, $pasien)->subject('Pemberitahuan HealthSpace');
+            });
+
+            $dokter =$dokters->nama ;
+            $email_dokter =$dokters->email;
+            $data = [
+                'name' => $dokter,
+                'body' => "Kepada Dokter : $dokter. ",
+              
+           
+            ];
+        
+            Mail::send('email.notif_dokter', $data, function ($message) use ($dokter, $email_dokter) {
+        
+        
+                $message->to($email_dokter, $dokter)->subject('Pemberitahuan HealthSpace');
+            });
 
         } else {
             //selain settlemned menunggu untuk melakukan pembayaran

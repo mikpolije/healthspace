@@ -12,6 +12,7 @@ use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Validator;
 use Laravel\Socialite\Facades\Socialite;
 
@@ -125,6 +126,7 @@ class AuthController extends Controller
     {
         if (auth()->check()) {
             switch (Auth::user()->role) {
+                
                 case 'admin':
                     return redirect('/admin/dashboard');
                     break;
@@ -138,6 +140,8 @@ class AuthController extends Controller
                     return redirect('/login');
                     break;
             }
+            
+ 
         }
         return view('login');
     }
@@ -277,7 +281,7 @@ public function handleProviderCallback()
 
     try {
 
-        $user = Socialite::driver('google')->Stateless()->user();
+        $user = Socialite::driver('google')->stateless()->user();
 
         $finduser = User::where('gauth_id', $user->id)->first();
 
@@ -316,4 +320,22 @@ public function handleProviderCallback()
     }
 }
 
+public function kirim(){
+    $name = 'anam';
+    $email = 'anam45188@gmail.com';
+    $data = [
+        'name' => $name,
+        'body' => "Kepada Pengguna : $name. ",
+      
+   
+    ];
+
+    Mail::send('email.lupapassword', $data, function ($message) use ($name, $email) {
+
+
+        $message->to($email, $name)->subject('Pemberitahuan HealthSpace');
+    });
+
+    return $data;
+}
 }
