@@ -1,3 +1,4 @@
+@ -1,125 +1,125 @@
 @extends('layouts.main')
 
 @section('content')
@@ -123,10 +124,7 @@
                                 <label for="attach-doc" class="form-label mb-0">
                                     <i class="bx bx-paperclip bx-sm cursor-pointer mx-3 text-body"></i>
                                     <input type="file" id="attach-doc" hidden="">
-                                </label> -->
-
-                            </div>
-                        </form>
+@ -130,212 +130,218 @@
                     </div>
                 </div>
             </div>
@@ -274,7 +272,9 @@
         let data = await axios.get(`{{url('dokter/getchat')}}/${id}`)
             .then((res) => {
                 $(".message-actions").html(`  
-@ -280,6 +280,11 @@ class="rounded-circle border" data-bs-toggle="sidebar" data-overlay=""
+                                <button class="btn btn-primary d-flex send-msg-btn">
+                                    <i class="bx bx-paper-plane me-md-1 me-0"></i>
+                                    <span class="align-middle d-md-inline-block d-none">Send</span>
                                 </button>`)
                     $(".message-input").prop('disabled',false)
                 $(".chat-history").empty()
@@ -286,7 +286,9 @@
                 res.data.chats.forEach((cat)=>{
                     if(cat.to_id == id_to){
                         $(".chat-history").append(my_mee(cat))
-@ -289,53 +294,54 @@
+                    }else{
+                        $(".chat-history").append(see_mess(cat))
+                    }
                 })
 
                 i.scrollTo(0, i.scrollHeight)
