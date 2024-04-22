@@ -49,7 +49,7 @@
                                     <h6 class="chat-contact-name text-truncate m-0">{{$d->nama}}</h6>
                                     <p class="chat-contact-status text-truncate mb-0 text-muted">{{$d->nama_poli}}</p>
                                 </div>
-                                <small class="text-muted mb-auto">5 Minutes</small>
+                                <small class="text-muted mb-auto"></small>
                             </a>
                         </li>
                         @empty

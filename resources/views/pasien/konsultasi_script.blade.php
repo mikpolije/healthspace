@@ -53,11 +53,7 @@
                             <small>ago</small>
                         </div>
                     </div>
-                    <div class="user-avatar flex-shrink-0 ms-3">
-                        <div class="avatar avatar-sm">
-                            <img src="http://127.0.0.1:8000/admin_theme/assets/img/avatars/1.png" alt="Avatar" class="rounded-circle">
-                        </div>
-                    </div>
+                  
                 </div>
             </li>
 
@@ -72,11 +68,7 @@
         let mmee =  `
                             <li class="chat-message">
                                     <div class="d-flex overflow-hidden">
-                                        <div class="user-avatar flex-shrink-0 me-3">
-                                            <div class="avatar avatar-sm">
-                                                <img src="http://127.0.0.1:8000/admin_theme/assets/img/avatars/1.png" alt="Avatar" class="rounded-circle">
-                                            </div>
-                                        </div>
+                                       
                                         <div class="chat-message-wrapper flex-grow-1">
                                             <div class="chat-message-text bg-${type=='catatan'?'primary':'success'}">
                                                 <p class="mb-0  fw-bold text-white">${type=='catatan'?'Catatan':'Resep'} Dokter</p>
@@ -110,9 +102,7 @@
                         </div>
                     </div>
                     <div class="user-avatar flex-shrink-0 ms-3">
-                        <div class="avatar avatar-sm">
-                            <img src="http://127.0.0.1:8000/admin_theme/assets/img/avatars/1.png" alt="Avatar" class="rounded-circle">
-                        </div>
+                       
                     </div>
                 </div>
             </li>
@@ -131,10 +121,7 @@
              <li class="chat-message">
                     <div class="d-flex overflow-hidden">
                         <div class="user-avatar flex-shrink-0 me-3">
-                            <div class="avatar avatar-sm">
-                                <img src="{{asset('admin_theme')}}/assets/img/avatars/5.png" alt="Avatar"
-                                    class="rounded-circle">
-                            </div>
+                           
                         </div>
                         <div class="chat-message-wrapper flex-grow-1">
                             <div class="chat-message-text ${data.type == 'end chat' ? 'bg-secondary' : ''}">
