@@ -54,7 +54,7 @@ class DashboardPasienController extends Controller
     $kons = Konsul::where("pasien_id",auth()->user()->id)->with(['last_chat','dokter','pasien'])->get();
 
     if($pemesanan==null){
-        return view('pasien.dashboard',compact('datadokter','konsul','chat_terbaru'));
+        return view('pasien.dashboard',compact('datadokter','konsul','chat_terbaru','kons'));
     }else{
 
         if($pemesanan->status_pembayaran=='pending'){

@@ -113,10 +113,10 @@
                             </div>
                             <div class="dokter col-7">
                                 <h6 class="text-white mb-0">{{$c->dokter->nama}}</h6>
-                                <span class="text-white" style="font-size:10px;">{{$c->last_chat->isi_chat}}.</span>
+                                <span class="text-white" style="font-size:10px;">{{$c->last_chat? $c->last_chat->isi_chat : ''}}.</span>
                             </div>
                             <div class="time col-3 text-end">
-                                <span style="font-size:9px;">@time_ago($c->last_chat->created_at)</span>
+                                <span style="font-size:9px;">@if($c->last_chat) @time_ago($c->last_chat->created_at) @else now  @endif</span>
                             </div>
                         </div>
                         @endforeach
