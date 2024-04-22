@@ -93,29 +93,82 @@
     });
 
     let my_mee = (data) => {
-        let my_mee =
-            `
-        <li class="chat-message chat-message-right">
-                <div class="d-flex overflow-hidden">
-                    <div class="chat-message-wrapper flex-grow-1">
-                        <div class="chat-message-text ${data.type == 'end chat' ? 'bg-secondary' : ''}">
-                            <p class="mb-0  ${data.type == 'end chat' ? 'fst-italic text-white' : ''}">${data.isi_chat}</p>
-                        </div>
-                        <div class="text-end text-muted mt-1">
-                            <i class="bx bx-check-double text-success"></i>
-                            <small>${timeAgo(data.created_at)}</small>
-                        </div>
-                    </div>
-                    <div class="user-avatar flex-shrink-0 ms-3">
-                        <div class="avatar avatar-sm">
-                            <img src="http://127.0.0.1:8000/admin_theme/assets/img/avatars/1.png" alt="Avatar" class="rounded-circle">
-                        </div>
-                    </div>
-                </div>
-            </li>
-        `;
+        let mmee = '';
+        switch (data.type) {
+            case 'catatan':
+                mmee =  `
+                            <li class="chat-message chat-message-right">
+                                    <div class="d-flex overflow-hidden">
+                                        <div class="chat-message-wrapper flex-grow-1">
+                                            <div class="chat-message-text bg-primary">
+                                                <p class="mb-0  fw-bold text-white">Catatan Dokter</p>
+                                                <button class="d-block btn bg-white mt-3">Lihat Catatan</button>
+                                            </div>
+                                            <div class="text-end text-muted mt-1">
+                                                <i class="bx bx-check-double text-success"></i>
+                                                <small>${timeAgo(data.created_at)}</small>
+                                            </div>
+                                        </div>
+                                        <div class="user-avatar flex-shrink-0 ms-3">
+                                            <div class="avatar avatar-sm">
+                                                <img src="http://127.0.0.1:8000/admin_theme/assets/img/avatars/1.png" alt="Avatar" class="rounded-circle">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                            `;
+                break;
+            case 'resep':
 
-        return my_mee;
+                mmee =  `
+                            <li class="chat-message chat-message-right">
+                                    <div class="d-flex overflow-hidden">
+                                        <div class="chat-message-wrapper flex-grow-1">
+                                            <div class="chat-message-text bg-success">
+                                                <p class="mb-0  fw-bold text-white">Resep Dokter</p>
+                                                <button class="d-block btn bg-white mt-3">Lihat Resep</button>
+                                            </div>
+                                            <div class="text-end text-muted mt-1">
+                                                <i class="bx bx-check-double text-success"></i>
+                                                <small>${timeAgo(data.created_at)}</small>
+                                            </div>
+                                        </div>
+                                        <div class="user-avatar flex-shrink-0 ms-3">
+                                            <div class="avatar avatar-sm">
+                                                <img src="http://127.0.0.1:8000/admin_theme/assets/img/avatars/1.png" alt="Avatar" class="rounded-circle">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                            `;
+                break;
+        
+            default:
+                mmee =  `
+                            <li class="chat-message chat-message-right">
+                                    <div class="d-flex overflow-hidden">
+                                        <div class="chat-message-wrapper flex-grow-1">
+                                            <div class="chat-message-text ${data.type == 'end chat' ? 'bg-secondary' : ''}">
+                                                <p class="mb-0  ${data.type == 'end chat' ? 'fst-italic text-white' : ''}">${data.isi_chat}</p>
+                                            </div>
+                                            <div class="text-end text-muted mt-1">
+                                                <i class="bx bx-check-double text-success"></i>
+                                                <small>${timeAgo(data.created_at)}</small>
+                                            </div>
+                                        </div>
+                                        <div class="user-avatar flex-shrink-0 ms-3">
+                                            <div class="avatar avatar-sm">
+                                                <img src="http://127.0.0.1:8000/admin_theme/assets/img/avatars/1.png" alt="Avatar" class="rounded-circle">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                            `;
+                break;
+        }
+           
+
+        return mmee;
     }
 
 
@@ -251,6 +304,7 @@
             let gejala = c_gejala.val()
             let saran = c_saran.val()
             let diagnosa = c_diagnosa.val()
+            $("#catatanModal").modal('hide')
                 axios.post("{{url('dokter/konsultasi/catatan')}}",{
                     gejala : gejala,
                     saran : saran,
@@ -258,8 +312,117 @@
                     to : id_to
                 })
                 .then(res=>{
-                    console.log(res)
+                    mmee =  `
+                            <li class="chat-message chat-message-right">
+                                    <div class="d-flex overflow-hidden">
+                                        <div class="chat-message-wrapper flex-grow-1">
+                                            <div class="chat-message-text bg-primary">
+                                                <p class="mb-0  fw-bold text-white">Catatan Dokter</p>
+                                                <button class="d-block btn bg-white mt-3">Lihat Catatan</button>
+                                            </div>
+                                            <div class="text-end text-muted mt-1">
+                                                <i class="bx bx-check-double text-success"></i>
+                                                <small>a go</small>
+                                            </div>
+                                        </div>
+                                        <div class="user-avatar flex-shrink-0 ms-3">
+                                            <div class="avatar avatar-sm">
+                                                <img src="http://127.0.0.1:8000/admin_theme/assets/img/avatars/1.png" alt="Avatar" class="rounded-circle">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                            `;
+                            $(".chat-history").append(mmee)
+                            i.scrollTo(0, i.scrollHeight)
                 })
         }
+    }
+
+    let reseps = []
+
+    let resepChat = ()=>{
+        reseps = []
+        showAllResep()
+        $("#resepModal").modal('show')
+    }
+
+    let showAllResep = ()=>{
+        $("#resepModal table tbody").empty()
+        reseps.forEach((r,nn)=>{
+            $("#resepModal table tbody").append(`
+                <tr>
+                    <td>${nn+1}</td>
+                    <td>${r.nama_obat}</td>
+                    <td>${r.jumlah}</td>
+                    <td>${r.dosis}</td>
+                    <td>
+                        <button class="btn btn-sm btn-danger" onclick="removeResep(${nn})"><i class='bx bxs-checkbox-minus'></i></button>
+                    </td>
+                </tr>
+            `)
+        })
+    }
+
+    let addResep = ()=>{
+        let nama_obat = $("#resepModal [name='nama_obat']")
+        let jumlah = $("#resepModal [name='jumlah']")
+        let dosis = $("#resepModal [name='dosis']")
+
+        if(nama_obat.val()!=""&&jumlah.val()!=""&&jumlah.val()!=""){
+                reseps.push({
+                nama_obat : nama_obat.val(),
+                jumlah : jumlah.val(),
+                dosis : dosis.val(),
+            })
+
+            showAllResep()
+            nama_obat.val('')
+            jumlah.val('')
+            dosis.val('')
+        }
+        return false;
+    }
+
+    let removeResep = (no)=>{
+        reseps.splice(no,1)
+        showAllResep()
+    }
+
+    let kirimResep = ()=>{
+        if(reseps.length > 0 && id_to!=''){
+            $("#resepModal").modal('hide')
+            axios.post("{{url('dokter/konsultasi/resep')}}",
+            {
+                data_catatan : JSON.stringify(reseps),
+                to : id_to
+            })
+            .then(res=>{
+                mmee =  `
+                            <li class="chat-message chat-message-right">
+                                    <div class="d-flex overflow-hidden">
+                                        <div class="chat-message-wrapper flex-grow-1">
+                                            <div class="chat-message-text bg-success">
+                                                <p class="mb-0  fw-bold text-white">Resep Dokter</p>
+                                                <button class="d-block btn bg-white mt-3">Lihat Resep</button>
+                                            </div>
+                                            <div class="text-end text-muted mt-1">
+                                                <i class="bx bx-check-double text-success"></i>
+                                                <small>a go</small>
+                                            </div>
+                                        </div>
+                                        <div class="user-avatar flex-shrink-0 ms-3">
+                                            <div class="avatar avatar-sm">
+                                                <img src="http://127.0.0.1:8000/admin_theme/assets/img/avatars/1.png" alt="Avatar" class="rounded-circle">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                            `;
+                            $(".chat-history").append(mmee)
+                            i.scrollTo(0, i.scrollHeight)
+            })
+        }
+        return false;
     }
 </script>

@@ -10,6 +10,8 @@ use App\Models\Konsul;
 use App\Models\Dokter;
 use App\Models\Pasien;
 use App\Models\icds;
+use App\Models\CatatanDokter;
+use App\Models\Resep;
 use DB;
 
 class KonsultasiController extends Controller
@@ -80,7 +82,12 @@ class KonsultasiController extends Controller
                 'isi_chat'=>$request->isi_chat
             ]);
         }
+        $data = ['from' => $from, 'to' => $to, 'isi_chat'=>$chat];
+        $this->sendToPusher($data);
+    }
 
+    public function sendToPusher($d)
+    {
         $options = array(
             'cluster' => 'ap1',
             'useTLS' => true
@@ -93,7 +100,7 @@ class KonsultasiController extends Controller
             $options
         );
 
-        $data = ['from' => $from, 'to' => $to, 'isi_chat'=>$chat];
+        $data = $d;
         $pusher->trigger('my-channel', 'my-event', $data);
     }
 
@@ -118,7 +125,59 @@ class KonsultasiController extends Controller
 
     public function kirimCatatan(Request $request)
     {
-        return response()->json($request->all());
+        $to = $request->to;
+        $me = auth()->user()->id;
+        $konsul = Konsul::where("pasien_id",$to)
+        ->where("dokter_id",$me)->latest('id')->first();
+        $catatan_id = CatatanDokter::create([
+            "konsul_id"=>$konsul->id,
+            "gejala"=>$request->gejala,
+            "saran"=>$request->saran,
+            "diagnosa"=>$request->diagnosa
+        ])->id;
+        $chat = Chat::create([
+            "konsul_id"=>$konsul->id,
+            "from_id"=>$me,
+            "to_id"=>$to,
+            "isi_chat"=>$catatan_id,
+            "type"=>"catatan"
+        ]);
+        $data = ['from' => $me, 'to' => $to, 'isi_chat'=>$chat];
+        $this->sendToPusher($data);
+        return response()->json(["id_catatan"=>$catatan_id]);
+    }
+
+    public function kirimResep(Request $request)
+    {
+        $to = $request->to;
+        $me = auth()->user()->id;
+        $data_catatan = json_decode($request->data_catatan);
+        $konsul = Konsul::where("pasien_id",$to)
+        ->where("dokter_id",$me)->latest('id')->first();
+        $catatan_id = CatatanDokter::create([
+            "konsul_id"=>$konsul->id,
+            "gejala"=>' ',
+            "saran"=>' ',
+            "diagnosa"=>' '
+        ])->id;
+        foreach($data_catatan as $catat){
+            Resep::create([
+                "catatan_dokter_id"=>$catatan_id,
+                "nama_obat"=>$catat->nama_obat,
+                "jumlah"=>$catat->jumlah,
+                "dosis"=>$catat->dosis
+            ]);
+        }
+        $chat = Chat::create([
+            "konsul_id"=>$konsul->id,
+            "from_id"=>$me,
+            "to_id"=>$to,
+            "isi_chat"=>$catatan_id,
+            "type"=>"resep"
+        ]);
+        $data = ['from' => $me, 'to' => $to, 'isi_chat'=>$chat];
+        $this->sendToPusher($data);
+        return response()->json(["id_catatan"=>$catatan_id]);
     }
 
     public function getIcds(Request $request)

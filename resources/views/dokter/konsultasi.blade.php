@@ -110,7 +110,8 @@
                                     <div class="dropdown-menu dropdown-menu-end" aria-labelledby="chat-header-actions">
                                         <a class="dropdown-item" href="javascript:void(0);"
                                             onclick="catatanChat()">Berikan Catatan</a>
-                                        <a class="dropdown-item" href="javascript:void(0);">Berikan Resep</a>
+                                        <a class="dropdown-item" href="javascript:void(0);"
+                                            onclick="resepChat()">Berikan Resep</a>
                                         <a class="dropdown-item" href="javascript:void(0);" onclick="endChat()">End Chat
                                             Konsultasi</a>
                                     </div>
@@ -184,33 +185,64 @@
 
     <!-- Resep Chat -->
     <div class="modal fade" id="resepModal" aria-labelledby="resepModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-lg">
+        <div class="modal-dialog modal-xl">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="resepModalLabel">Catatan Dokter</h5>
+                    <h5 class="modal-title" id="resepModalLabel">Resep Dokter</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <div class="form-group">
-                        <label for="">Gejala</label>
-                        <textarea name="gejala" class="form-control"></textarea>
-                    </div>
-                    <div class="form-group">
-                        <label for="">Saran</label>
-                        <textarea name="saran" class="form-control"></textarea>
+                    <div class="row">
+                        <div class="col-md-6">
+
+                            <div class="form-group">
+                                <label for="">Nama Obat</label>
+                                <input type="text" class="form-control" name="nama_obat">
+                            </div>
+                            <div class="form-group">
+                                <label for="">Jumlah</label>
+                                <input type="number" class="form-control" name="jumlah">
+                            </div>
+                            <div class="form-group">
+                                <label for="">Dosis</label>
+                                <input type="text" class="form-control" name="dosis">
+                            </div>
+
+                            <button class="btn btn-sm btn-primary mt-2 mb-2" onclick="addResep()">Add</button>
+
+                        </div>
+
+
+                        <div class="col-md-6 border">
+
+                            <div class="table-responsive">
+                                <table class="table">
+                                    <thead>
+                                        <tr>
+                                            <th>NO</th>
+                                            <th>Nama Obat</th>
+                                            <th>Jumlah</th>
+                                            <th>Dosis</th>
+                                            <th>Remove</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+
+                                    </tbody>
+                                </table>
+                            </div>
+
+                        </div>
+
                     </div>
 
-                    <div class="form-group">
-                        <label for="">Diagnosis</label>
-                        <select class="form-select" id="single-select-field2" data-placeholder="Choose one thing">
 
-                        </select>
-                    </div>
+
 
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary">Kirim</button>
+                    <button type="button" class="btn btn-primary" onclick="kirimResep()">Kirim</button>
                 </div>
             </div>
         </div>
