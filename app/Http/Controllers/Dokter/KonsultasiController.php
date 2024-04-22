@@ -180,6 +180,16 @@ class KonsultasiController extends Controller
         return response()->json(["id_catatan"=>$catatan_id]);
     }
 
+    public function lihatCatatan(Request $request)
+    {
+        if($request->type == "catatan"){
+            $data = CatatanDokter::leftjoin("icds","catatan_dokters.diagnosa","icds.code")->find($request->id);
+        }else{
+            $data = Resep::where("catatan_dokter_id",$request->id)->get();
+        }
+        return response()->json($data);
+    }
+
     public function getIcds(Request $request)
     {
         if ($request->ajax())

@@ -75,8 +75,10 @@ Route::middleware(['role:pasien'])->group(function () {
         Route::post('profil_pasien_update/{id}', [AuthController::class, 'profil_pasien_update']);
 
         Route::get('konsultasi',[KonsultasiPasienController::class,'index']);
+        Route::post('konsultasi/lihatcatatan', [KonsultasiDokterController::class, 'lihatCatatan']);
         Route::post('pemesanan',[DashboardPasienController::class,'pemesanan']);
         Route::get('pemesanan/{id}',[DashboardPasienController::class,'pemesanan_view']);
+
     });
 });
 
@@ -88,10 +90,12 @@ Route::middleware(['role:dokter'])->group(function () {
         Route::get('konsultasi', [KonsultasiDokterController::class, 'index']);
         Route::post('konsultasi/catatan', [KonsultasiDokterController::class, 'kirimCatatan']);
         Route::post('konsultasi/resep', [KonsultasiDokterController::class, 'kirimResep']);
+        Route::post('konsultasi/lihatcatatan', [KonsultasiDokterController::class, 'lihatCatatan']);
+
         Route::post('sendchat',[KonsultasiDokterController::class,'sendChat']);
         Route::get('getchat/{id}',[KonsultasiDokterController::class,'getChat']);
-
         
+
         Route::get('profil-dokter', [AuthController::class, 'profil_dokter']);
         Route::post('profil_dokter_update/{id}', [AuthController::class, 'profil_dokter_update']);
 
