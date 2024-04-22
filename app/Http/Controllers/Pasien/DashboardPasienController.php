@@ -52,6 +52,7 @@ class DashboardPasienController extends Controller
     //Last Konsul
     
     $kons = Konsul::where("pasien_id",auth()->user()->id)->with(['last_chat','dokter','pasien'])->get();
+        // return $kons;
 
     if($pemesanan==null){
         return view('pasien.dashboard',compact('datadokter','konsul','chat_terbaru','kons'));
