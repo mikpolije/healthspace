@@ -22,10 +22,10 @@
                             <th>Nama Pasien</th>
                             <th>Nama Dokter</th>
                             <th>Tanggal Konsultasi</th>
-                            <th>Diagnosa</th>
+                            <th>Konsultasi</th>
 
 
-                            <!-- <th width="25%">Actions</th> -->
+                            <th width="25%">Actions</th>
                        
                         </tr>
                     </thead>
@@ -38,8 +38,11 @@
                             <td>{{$v->tgl_konsultasi}}</td>
                             <td>{{$v->konsultasi}}</td>
                     
-                            <td>
-                              
+                            <td class="d-flex">
+                                                <a
+                                    href="{{url('admin/hasil_konsultasi',$v->id)}}"><span
+                                        class="badge bg-primary rounded-3 fw-semibold">Catatan Dokter & Resep</span></a>
+                                 
                             </td>
                         </tr>
                         @endforeach

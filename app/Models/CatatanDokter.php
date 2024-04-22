@@ -9,5 +9,9 @@ class CatatanDokter extends Model
 {
     use HasFactory;
     protected $guarded = [];
+    public function reseps()
+    {
+        return $this->hasMany(Resep::class, 'catatan_dokter_id');
+    }
 
 }

@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\CatatanDokter;
+use App\Models\Resep;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -23,6 +25,22 @@ class DaftarKonsultasiController extends Controller
         ->get();
 // return $data;
         return view('admin.daftar-konsultasi',compact('data'));
+    }
+
+    public function hasil_konsultasi($id){
+        $catatan = 
+         DB::table('catatan_dokters')
+        ->leftjoin('icds','catatan_dokters.diagnosa','icds.code')
+        ->select('icds.*','catatan_dokters.*')
+        ->where('konsul_id',$id)->first();
+
+        $catatan2 = CatatanDokter::where('konsul_id',$id)->orderBy('id','desc')->first();
+
+
+        $resep = Resep::where('catatan_dokter_id',$catatan2->id)->get();
+        // return [$catatan,$catatan2,$resep];
+    
+        return view('admin.catatan_resep',compact('catatan','catatan2','resep'));
     }
 
 

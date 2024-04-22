@@ -61,6 +61,7 @@ Route::middleware(['role:admin'])->group(function () {
         Route::get('daftar-pasien/hapus/{id}', [DaftarPasienController::class, 'destroy']);
 
         Route::resource('daftar-konsultasi', DaftarKonsultasiController::class);
+        Route::get('hasil_konsultasi/{id}', [DaftarKonsultasiController::class,'hasil_konsultasi']);
 
         Route::resource('invoice', DaftarInvoiceController::class);
 
