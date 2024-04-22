@@ -91,7 +91,7 @@
                 <div class="card h-100">
                     <div class="card-body">
                         <h6 class="fw-bold">Jumlah Konsultasi Anda</h6>
-                        <h3 class="text-end">6</h3>
+                        <h3 class="text-end">{{$kons->count()}}</h3>
                     </div>
                 </div>
             </div>
@@ -100,23 +100,23 @@
                 <div class="card h-100">
                     <h6 class="fw-bold mt-4 mx-3 mb-2">Konsultasi Terbaru Anda</h6>
                     <div class="konsultasi mb-2">
-                    @if($chat_terbaru->isEmpty())
+                    @if($kons->isEmpty())
     <div class="bg-secondary w-100 d-flex flex-row border-bottom py-1 px-1">
         <span class="text-white">Tidak Ada chat</span>
     </div>
 @else
-                    @foreach($chat_terbaru as $c)
+                    @foreach($kons as $c)
                         <div class="bg-secondary w-100 d-flex flex-row border-bottom py-1 px-1">
                             <div class="col-2">
                                 <img src="{{url('profil/profil.jpg')}}" alt="" width="50" height="50"
                                     class="rounded rounded-circle me-2">
                             </div>
                             <div class="dokter col-7">
-                                <h6 class="text-white mb-0">{{$c->nama}}</h6>
-                                <span class="text-white" style="font-size:10px;">{{$c->isi_chat}}.</span>
+                                <h6 class="text-white mb-0">{{$c->dokter->nama}}</h6>
+                                <span class="text-white" style="font-size:10px;">{{$c->last_chat->isi_chat}}.</span>
                             </div>
                             <div class="time col-3 text-end">
-                                <span style="font-size:9px;">{{$c->tanggal}}</span>
+                                <span style="font-size:9px;">@time_ago($c->last_chat->created_at)</span>
                             </div>
                         </div>
                         @endforeach

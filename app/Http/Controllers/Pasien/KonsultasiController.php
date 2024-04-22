@@ -25,6 +25,7 @@ class KonsultasiController extends Controller
         ->select('dokters.*','users.nama','users.profil','polis.nama_poli')
         ->get();
 
+
         return view('pasien.konsultasi',compact('dokter'));
     }
 
