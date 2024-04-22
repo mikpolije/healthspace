@@ -100,34 +100,29 @@
                 <div class="card h-100">
                     <h6 class="fw-bold mt-4 mx-3 mb-2">Konsultasi Terbaru Anda</h6>
                     <div class="konsultasi mb-2">
-
+                    @if($chat_terbaru->isEmpty())
+    <div class="bg-secondary w-100 d-flex flex-row border-bottom py-1 px-1">
+        <span class="text-white">Tidak Ada chat</span>
+    </div>
+@else
+                    @foreach($chat_terbaru as $c)
                         <div class="bg-secondary w-100 d-flex flex-row border-bottom py-1 px-1">
                             <div class="col-2">
                                 <img src="{{url('profil/profil.jpg')}}" alt="" width="50" height="50"
                                     class="rounded rounded-circle me-2">
                             </div>
                             <div class="dokter col-7">
-                                <h6 class="text-white mb-0">Nama Dokter</h6>
-                                <span class="text-white" style="font-size:10px;">Selamat Siang...</span>
+                                <h6 class="text-white mb-0">{{$c->nama}}</h6>
+                                <span class="text-white" style="font-size:10px;">{{$c->isi_chat}}.</span>
                             </div>
                             <div class="time col-3 text-end">
-                                <span style="font-size:9px;">12/09/99</span>
+                                <span style="font-size:9px;">{{$c->tanggal}}</span>
                             </div>
                         </div>
+                        @endforeach
+                        @endif
 
-                        <div class="bg-secondary w-100 d-flex flex-row border-bottom py-1 px-1">
-                            <div class="col-2">
-                                <img src="{{url('profil/profil.jpg')}}" alt="" width="50" height="50"
-                                    class="rounded rounded-circle">
-                            </div>
-                            <div class="dokter col-7 ps-1">
-                                <h6 class="text-white mb-0">Nama Dokter</h6>
-                                <span class="text-white" style="font-size:10px;">Selamat Siang...</span>
-                            </div>
-                            <div class="time col-3 text-end">
-                                <span style="font-size:9px;">12/09/99</span>
-                            </div>
-                        </div>
+                    
 
                     </div>
                 </div>

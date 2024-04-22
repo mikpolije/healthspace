@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Pasien;
 
 use App\Http\Controllers\Controller;
+use App\Models\Chat;
 use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\Konsul;
@@ -30,6 +31,16 @@ class DashboardPasienController extends Controller
 
         }
         $konsul = Konsul::where('pasien_id',auth()->user()->id)->count();
+        $konsulterbaru = Konsul::where('pasien_id',auth()->user()->id)->orderBy('id','desc')->limit(2)->get();
+        $chat_terbaru = Chat::join('users','chats.from_id','users.id')
+        ->select('users.nama','chats.*')
+        ->where('to_id',auth()->user()->id)->orderBy('id','desc')->limit(2)->get();
+        foreach($chat_terbaru as $c){
+            $c->tanggal = date('Y-m-d', strtotime($c->updated_at));
+        }
+        // return $chat_terbaru;
+        // return $konsulterbaru;
+
 
         // return $datadokter;
         $pemesanan = DB::table('pembayarans')
@@ -41,18 +52,20 @@ class DashboardPasienController extends Controller
 
  
     if($pemesanan==null){
-        return view('pasien.dashboard',compact('datadokter','konsul'));
+        return view('pasien.dashboard',compact('datadokter','konsul','chat_terbaru'));
     }else{
 
         if($pemesanan->status_pembayaran=='pending'){
             // return view('pasien.dashboard',compact('datadokter','konsul'));
             return redirect('pasien/pemesanan/'.$pemesanan->id);
         }else{
-            if($pemesanan->status_konsultasi=='dimulai'){
-                return redirect('pasien/konsultasi');
-            }else{
-                return view('pasien.dashboard',compact('datadokter','konsul'));
-            }
+            // if($pemesanan->status_konsultasi=='start'){
+            //     return redirect('pasien/konsultasi');
+            //     // return view('pasien.dashboard',compact('datadokter','konsul','chat_terbaru'));
+            // }else{
+                // return redirect('pasien/konsultasi');
+                return view('pasien.dashboard',compact('datadokter','konsul','chat_terbaru'));
+            // }
 
         
         }

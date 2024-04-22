@@ -94,13 +94,13 @@
 
 
     let catatan_resep = (type,time,id)=>{
-        mmee =  `
+        let mmee =  `
                             <li class="chat-message chat-message-right">
                                     <div class="d-flex overflow-hidden">
                                         <div class="chat-message-wrapper flex-grow-1">
                                             <div class="chat-message-text bg-${type=='catatan'?'primary':'success'}">
-                                                <p class="mb-0  fw-bold text-white">${type='catatan'?'Catatan':'Resep'} Dokter</p>
-                                                <button class="d-block btn bg-white mt-3">Lihat ${type='catatan'?'Catatan':'Resep'}</button>
+                                                <p class="mb-0  fw-bold text-white">${type=='catatan'?'Catatan':'Resep'} Dokter</p>
+                                                <button class="d-block btn bg-white mt-3" onclick="lihatCatatan('${id}','${type}')">Lihat ${type=='catatan'?'Catatan':'Resep'}</button>
                                             </div>
                                             <div class="text-end text-muted mt-1">
                                                 <i class="bx bx-check-double text-success"></i>
@@ -362,5 +362,67 @@
             })
         }
         return false;
+    }
+
+    let lihatCatatan = (id,type)=>{
+        axios.post(`{{url('dokter/konsultasi/lihatcatatan')}}`,{
+            id:id,
+            type:type
+        }).then(res=>{
+            console.log(res.data)
+            let mmee="";
+            if(type=="catatan"){
+                mmee = `
+                        <div class="table-responsive">
+                            <table class="table">
+                                <tbody>
+                                    <tr>
+                                        <th class='w-25'>Gejala</th>
+                                        <td>: ${res.data.gejala}</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Saran</th>
+                                        <td>:  ${res.data.saran}</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Diagnosa</th>
+                                        <td><p>: ${res.data.name_en}</p> <p class="fst-italic">(${res.data.name_id})</p> </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                `
+            }else{
+                mmee = `
+                     <div class="table-responsive">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>No</th>
+                                    <th>Nama Obat</th>
+                                    <th>Jumlah</th>
+                                    <th>Dosis</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                `;
+                res.data.forEach((resep,n)=>{
+                    mmee = mmee+`
+                    <tr>
+                        <td>${n+1}</td>
+                        <td>${resep.nama_obat}</td>
+                        <td>${resep.jumlah}</td>
+                        <td>${resep.dosis}</td>
+                    </tr>
+                    `;
+                })
+                mmee = mmee+` </tbody></table></div>`;
+            }
+
+            $("#lihatCatatan .modal-title").html(`${type=='catatan'?'Catatan Dokter':'Resep Dokter'}`)
+            $("#lihatCatatan .modal-body").html(mmee)
+            $("#lihatCatatan").modal("show")
+        })
     }
 </script>
