@@ -321,8 +321,8 @@ public function handleProviderCallback()
 }
 
 public function kirim(){
-    $name = 'anam';
-    $email = 'anam45188@gmail.com';
+    $name = 'elen';
+    $email = 'gologand@gmail.com';
     $data = [
         'name' => $name,
         'body' => "Kepada Pengguna : $name. ",
