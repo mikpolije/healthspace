@@ -321,7 +321,7 @@ public function handleProviderCallback()
 }
 
 public function kirim(){
-    $name = 'elen';
+    $name = 'ELen';
     $email = 'gologand@gmail.com';
     $data = [
         'name' => $name,
