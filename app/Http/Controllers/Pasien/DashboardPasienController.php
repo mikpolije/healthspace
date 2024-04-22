@@ -1,3 +1,4 @@
+@ -1,164 +1,166 @@
 <?php
 
 namespace App\Http\Controllers\Pasien;
@@ -49,8 +50,10 @@ class DashboardPasienController extends Controller
         ->where('konsuls.pasien_id',auth()->user()->id)->first();
     // return $pemesanan;
 
+    //Last Konsul
+    
+    $kons = Konsul::where("pasien_id",auth()->user()->id)->with(['last_chat','dokter','pasien'])->get();
 
- 
     if($pemesanan==null){
         return view('pasien.dashboard',compact('datadokter','konsul','chat_terbaru'));
     }else{
@@ -64,7 +67,7 @@ class DashboardPasienController extends Controller
             //     // return view('pasien.dashboard',compact('datadokter','konsul','chat_terbaru'));
             // }else{
                 // return redirect('pasien/konsultasi');
-                return view('pasien.dashboard',compact('datadokter','konsul','chat_terbaru'));
+                return view('pasien.dashboard',compact('datadokter','konsul','chat_terbaru','kons'));
             // }
 
         
