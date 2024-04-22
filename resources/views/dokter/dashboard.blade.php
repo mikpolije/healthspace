@@ -33,9 +33,15 @@
         <div class="d-flex justify-content-between gap-1">
         <div class="judul d-flex flex-column justify-content-center col-4">
     <div class="card bg-success-dark text-white">
-        <h3 class="card-header">Pesan Masuk (3)</h3>
+        <h3 class="card-header">Pesan Masuk</h3>
            
         <div class="card bg-secondary">
+        @if($chat_terbaru->isEmpty())
+    <div class="bg-secondary w-100 d-flex flex-row border-bottom py-1 px-1">
+        <span class="text-white">Tidak Ada chat</span>
+    </div>
+@else
+@foreach($chat_terbaru as $c)
     <div class="card-body">
         <div class="row">
         
@@ -44,35 +50,15 @@
             </div>
         
             <div class="col">
-                <h5 class="card-title text-white">Oliv</h5>
-                <h6 class="card-title text-white">Hai</h6>
+                <h5 class="card-title text-white">{{$c->nama}}</h5>
+                <h6 class="card-title text-white">{{$c->isi_chat}}</h6>
                
-            </div>
-    
-            <div class="col-auto">
-                <span class="badge bg-success">3</span>
             </div>
         </div>
     </div>
     <hr class="border border-dark">
-    <div class="card-body">
-        <div class="row">
-        
-            <div class="col-auto">
-                <img src="{{url('profil/profil.jpg')}}" alt="Gambar Profil" class="rounded-circle" width="50" height="50">
-            </div>
-        
-            <div class="col">
-                <h5 class="card-title text-white">Oliv</h5>
-                <h6 class="card-title text-white">Hai</h6>
-               
-            </div>
-    
-            <div class="col-auto">
-                <span class="badge bg-success">3</span>
-            </div>
-        </div>
-    </div>
+    @endforeach
+                        @endif
 </div>
 
 
