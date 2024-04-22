@@ -92,58 +92,37 @@
 
     });
 
+
+    let catatan_resep = (type,time,id)=>{
+        mmee =  `
+                            <li class="chat-message chat-message-right">
+                                    <div class="d-flex overflow-hidden">
+                                        <div class="chat-message-wrapper flex-grow-1">
+                                            <div class="chat-message-text bg-${type=='catatan'?'primary':'success'}">
+                                                <p class="mb-0  fw-bold text-white">${type='catatan'?'Catatan':'Resep'} Dokter</p>
+                                                <button class="d-block btn bg-white mt-3">Lihat ${type='catatan'?'Catatan':'Resep'}</button>
+                                            </div>
+                                            <div class="text-end text-muted mt-1">
+                                                <i class="bx bx-check-double text-success"></i>
+                                                <small>${time}</small>
+                                            </div>
+                                        </div>
+                                        <div class="user-avatar flex-shrink-0 ms-3">
+                                            <div class="avatar avatar-sm">
+                                                <img src="http://127.0.0.1:8000/admin_theme/assets/img/avatars/1.png" alt="Avatar" class="rounded-circle">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                            `;
+        return mmee;
+    }
+
     let my_mee = (data) => {
         let mmee = '';
-        switch (data.type) {
-            case 'catatan':
-                mmee =  `
-                            <li class="chat-message chat-message-right">
-                                    <div class="d-flex overflow-hidden">
-                                        <div class="chat-message-wrapper flex-grow-1">
-                                            <div class="chat-message-text bg-primary">
-                                                <p class="mb-0  fw-bold text-white">Catatan Dokter</p>
-                                                <button class="d-block btn bg-white mt-3">Lihat Catatan</button>
-                                            </div>
-                                            <div class="text-end text-muted mt-1">
-                                                <i class="bx bx-check-double text-success"></i>
-                                                <small>${timeAgo(data.created_at)}</small>
-                                            </div>
-                                        </div>
-                                        <div class="user-avatar flex-shrink-0 ms-3">
-                                            <div class="avatar avatar-sm">
-                                                <img src="http://127.0.0.1:8000/admin_theme/assets/img/avatars/1.png" alt="Avatar" class="rounded-circle">
-                                            </div>
-                                        </div>
-                                    </div>
-                                </li>
-                            `;
-                break;
-            case 'resep':
-
-                mmee =  `
-                            <li class="chat-message chat-message-right">
-                                    <div class="d-flex overflow-hidden">
-                                        <div class="chat-message-wrapper flex-grow-1">
-                                            <div class="chat-message-text bg-success">
-                                                <p class="mb-0  fw-bold text-white">Resep Dokter</p>
-                                                <button class="d-block btn bg-white mt-3">Lihat Resep</button>
-                                            </div>
-                                            <div class="text-end text-muted mt-1">
-                                                <i class="bx bx-check-double text-success"></i>
-                                                <small>${timeAgo(data.created_at)}</small>
-                                            </div>
-                                        </div>
-                                        <div class="user-avatar flex-shrink-0 ms-3">
-                                            <div class="avatar avatar-sm">
-                                                <img src="http://127.0.0.1:8000/admin_theme/assets/img/avatars/1.png" alt="Avatar" class="rounded-circle">
-                                            </div>
-                                        </div>
-                                    </div>
-                                </li>
-                            `;
-                break;
-        
-            default:
+            if(data.type == 'catatan' || data.type=='resep'){
+             mmee =  catatan_resep(data.type,timeAgo(data.created_at),data.isi_chat)
+            }else{
                 mmee =  `
                             <li class="chat-message chat-message-right">
                                     <div class="d-flex overflow-hidden">
@@ -164,7 +143,6 @@
                                     </div>
                                 </li>
                             `;
-                break;
         }
            
 
@@ -312,27 +290,7 @@
                     to : id_to
                 })
                 .then(res=>{
-                    mmee =  `
-                            <li class="chat-message chat-message-right">
-                                    <div class="d-flex overflow-hidden">
-                                        <div class="chat-message-wrapper flex-grow-1">
-                                            <div class="chat-message-text bg-primary">
-                                                <p class="mb-0  fw-bold text-white">Catatan Dokter</p>
-                                                <button class="d-block btn bg-white mt-3">Lihat Catatan</button>
-                                            </div>
-                                            <div class="text-end text-muted mt-1">
-                                                <i class="bx bx-check-double text-success"></i>
-                                                <small>a go</small>
-                                            </div>
-                                        </div>
-                                        <div class="user-avatar flex-shrink-0 ms-3">
-                                            <div class="avatar avatar-sm">
-                                                <img src="http://127.0.0.1:8000/admin_theme/assets/img/avatars/1.png" alt="Avatar" class="rounded-circle">
-                                            </div>
-                                        </div>
-                                    </div>
-                                </li>
-                            `;
+                             mmee =  catatan_resep('catatan',"a go",res.data.id_catatan)
                             $(".chat-history").append(mmee)
                             i.scrollTo(0, i.scrollHeight)
                 })
@@ -398,29 +356,9 @@
                 to : id_to
             })
             .then(res=>{
-                mmee =  `
-                            <li class="chat-message chat-message-right">
-                                    <div class="d-flex overflow-hidden">
-                                        <div class="chat-message-wrapper flex-grow-1">
-                                            <div class="chat-message-text bg-success">
-                                                <p class="mb-0  fw-bold text-white">Resep Dokter</p>
-                                                <button class="d-block btn bg-white mt-3">Lihat Resep</button>
-                                            </div>
-                                            <div class="text-end text-muted mt-1">
-                                                <i class="bx bx-check-double text-success"></i>
-                                                <small>a go</small>
-                                            </div>
-                                        </div>
-                                        <div class="user-avatar flex-shrink-0 ms-3">
-                                            <div class="avatar avatar-sm">
-                                                <img src="http://127.0.0.1:8000/admin_theme/assets/img/avatars/1.png" alt="Avatar" class="rounded-circle">
-                                            </div>
-                                        </div>
-                                    </div>
-                                </li>
-                            `;
-                            $(".chat-history").append(mmee)
-                            i.scrollTo(0, i.scrollHeight)
+                    mmee =  catatan_resep('resep',"a go",res.data.id_catatan)
+                    $(".chat-history").append(mmee)
+                    i.scrollTo(0, i.scrollHeight)
             })
         }
         return false;
