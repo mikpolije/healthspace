@@ -21,7 +21,7 @@
                             <th>No</th>
                             <th>Nama</th>
                             <th>Poli</th>
-                            
+                         
                             <th width="25%">Actions</th>
                            
                         </tr>
@@ -32,7 +32,7 @@
                             <td>{{$loop->iteration}}</td>
                             <td>{{$v->nama}}</td>
                             <td>{{$v->nama_poli}}</td>
-                      
+                          
                                  
                             <td class="d-flex">
                                         <a class="dropdown-item" href="{{url('admin/dokter/'.$v->id)}}"><i
