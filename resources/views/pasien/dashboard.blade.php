@@ -38,6 +38,7 @@
                             <p>Kamis<span class="float-end">06.00 - 17.00</span></p>
                             <p>Jumat <span class="float-end">06.00 - 17.00</span></p>
                             <p>Sabtu <span class="float-end">06.00 - 17.00</span></p> -->
+                            <h6>Biaya Layanan</h6>
                             <h6>Jadwal Praktik</h6>
                         <div class="jadwal_praktik">
                             <!-- Tempat untuk menampilkan jadwal praktik -->
