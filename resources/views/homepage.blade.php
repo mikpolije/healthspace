@@ -53,6 +53,7 @@
           <li><a class="nav-link scrollto active" href="#hero">Home</a></li>
           <li><a class="nav-link scrollto" href="#features">Tentang Klinik</a></li>
           <li><a class="nav-link scrollto" href="#doctors">Dokter</a></li>
+          <li><a class="nav-link scrollto" href="#healthspace">Telemedicine</a></li>
           <li><a class="nav-link scrollto" href="#gallery">Gallery</a></li>
           <li><a class="nav-link scrollto" href="#contact">Kontak dan Pengaduan</a></li>
         </ul>
@@ -71,7 +72,7 @@
           <div>
             <h1>Klinik Fanda Berkat Medika Panti</h1>
             <h2></h2>
-            <a href="login" class="download-btn"><i class="fa-solid fa-comments"></i>Telemedicine</a>
+            <a href="login" class="download-btn"><i class="fa-solid fa-comments"></i>HealthSpace Telemedicine</a>
           </div>
         </div>
         <div class="col-lg-6 d-lg-flex flex-lg-column align-items-stretch order-1 order-lg-2 hero-img" data-aos="fade-up">
@@ -154,7 +155,8 @@
         </div>
 
       </div>
-    </section><!-- End App Features Section -->
+    </section>
+    <!-- End App Features Section -->
 
     <!-- ======= Details Section ======= -->
     <section id="details" class="details">
@@ -260,6 +262,49 @@
       </div>
 </div>
     <!-- End Doctor Section -->
+
+    <!-- ======= Healthspace Features Section ======= -->
+    <section id="healthspace" class="healthspace">
+      <div class="container">
+
+        <div class="section-title">
+          <h2>HEALTHSPACE</h2>
+          <p>HealthSpace adalah sebuah layanan kesehatan yang melayani konsultasi online dengan dokter berpengalaman dan terpercaya. 
+            HealthSpace tersedia dalam versi website sehingga dapat diakses melalui perangkat apapun.</p>
+        </div>
+
+        <div class="row no-gutters">
+          <div class="col-xl-7 d-flex align-items-stretch order-2 order-lg-1">
+            <div class="content d-flex flex-column justify-content-center">
+              <div class="row">
+                <div class="col-md-6 icon-box" data-aos="fade-up">
+                <i class='bx bx-plus-medical' ></i>
+                  <h4>Layanan Dokter Umum dan Gigi</h4>
+                  <p></p>
+                </div>
+                <div class="col-md-6 icon-box" data-aos="fade-up" data-aos-delay="100">
+                  <i class='bx bxs-capsule' ></i>
+                  <h4>Peresepan Obat</h4>
+                  <p></p>
+                </div>
+                <div class="col-md-6 icon-box" data-aos="fade-up" data-aos-delay="200">
+                <i class='bx bx-wallet' ></i>
+                  <h4>Harga Terjangkau</h4>
+                  <p></p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="image col-xl-5 d-flex align-items-stretch justify-content-center order-1 order-lg-2" data-aos="fade-left" data-aos-delay="100">
+            <img src="assets/img/hs/ttghs.png" class="img-fluid" alt="">
+          </div>
+        </div>
+
+      </div>
+    </section>
+    <!-- End healthspace Features Section -->
+
+
     <!-- ======= Gallery Section ======= -->
     <section id="gallery" class="gallery">
       <div class="container" data-aos="fade-up">
@@ -351,7 +396,8 @@
         </div>
 
       </div>
-    </section><!-- End Contact Section -->
+    </section>
+    <!-- End Contact Section -->
 
   </main><!-- End #main -->
 
