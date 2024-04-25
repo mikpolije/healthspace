@@ -23,6 +23,11 @@
             <div class="form-group">
                 <label for="" class="form-label">Password</label>
                 <input type="password" class="form-control @error('password') is-invalid @enderror" name="password">
+            </div>
+            <!-- <div class="form-group">
+                <label for="" class="form-label">Spesialis</label>
+                <input type="text" class="form-control @error('spesialis') is-invalid @enderror" name="spesialis" value="{{$data->spesialis}}">
+            </div> -->
 
             <div class="form-group">
                 <label for="" class="form-label">Poli</label>

@@ -14,10 +14,11 @@ class DokterController extends Controller
     public function index()
     {
         $data =DB::table('dokters')
-        ->leftJoin('polis','dokters.id','polis.id')
+        ->leftJoin('polis','dokters.poli_id','polis.id')
         ->leftJoin('users','dokters.user_id','users.id')
-        ->select('users.nama','polis.nama_poli','dokters.*')
-        ->orderBy('id','desc')->get();
+        ->select('users.nama','polis.*','dokters.*')
+        ->orderBy('dokters.id','desc')->get();
+        // return $data;
         return view('admin.dokter',compact('data'));
     }
 
@@ -34,6 +35,8 @@ class DokterController extends Controller
             'nama'=>'required',
             'email'=>'required',
             'password'=>'required',
+            'poli_id'=>'required',
+
           
         
         ]);
