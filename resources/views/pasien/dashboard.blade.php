@@ -148,7 +148,10 @@
                                 <div class="card-body">
                                     <h5 class="card-title text-center">{{$dokter->nama}}</h5>
                                     <p class="card-text text-center">
-                                        Buka Praktik : 09.00 - 17.00
+                                        @foreach($dokter->jadwal_praktik as $j)
+                                        {{$j->jam_praktik_awal}} -{{$j->jam_praktik_akhir}}
+                                        @endforeach
+
                                     </p>
                                 </div>
                             </div>

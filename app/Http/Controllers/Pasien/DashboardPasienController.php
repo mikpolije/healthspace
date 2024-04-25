@@ -30,6 +30,7 @@ class DashboardPasienController extends Controller
         $d->profil =asset('profil/'.$d->profil);
 
         }
+        // return $datadokter;
         $konsul = Konsul::where('pasien_id',auth()->user()->id)->count();
         $konsulterbaru = Konsul::where('pasien_id',auth()->user()->id)->orderBy('id','desc')->limit(2)->get();
         $chat_terbaru = Chat::join('users','chats.from_id','users.id')
@@ -52,7 +53,7 @@ class DashboardPasienController extends Controller
     //Last Konsul
     
     $kons = Konsul::where("pasien_id",auth()->user()->id)->with(['last_chat','dokter','pasien'])->get();
-        // return $kons;
+    // return $kons;
 
     if($pemesanan==null){
         return view('pasien.dashboard',compact('datadokter','konsul','chat_terbaru','kons'));
