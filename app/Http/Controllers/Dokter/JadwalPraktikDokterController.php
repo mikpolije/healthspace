@@ -49,11 +49,11 @@ class JadwalPraktikDokterController extends Controller
 
         $hari = JadwalPraktikDokter::pluck('hari_praktik')->toArray(); 
 
-        if (in_array($request->hari_praktik, $hari)) {
-            return redirect()->back()
-            ->with('error','Hari Praktik Sudah ada,Silahkan Pilih Hari Praktik yang belum dipilih');
+        // if (in_array($request->hari_praktik, $hari)) {
+        //     return redirect()->back()
+        //     ->with('error','Hari Praktik Sudah ada,Silahkan Pilih Hari Praktik yang belum dipilih');
         
-        } else {
+        // } else {
             $data = $request->validate([
                 'hari_praktik'=>'required',
                 'jam_praktik_awal'=>'required',
@@ -67,7 +67,7 @@ class JadwalPraktikDokterController extends Controller
             
             return redirect('dokter/jadwal_praktik/'.$request->dokter_id)
             ->with('success','Data Jadwal Praktik Dokter Berhasil Ditambah');
-        }
+        // }
       
     }
 
