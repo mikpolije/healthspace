@@ -73,6 +73,9 @@
             <h1>Klinik Fanda Berkat Medika Panti</h1>
             <h2></h2>
             <a href="login" class="download-btn"><i class="fa-solid fa-comments"></i>HealthSpace Telemedicine</a>
+            <a href="{{ route('aduan-main') }}" class="download-btn"><i class="fa-solid fa-comments"></i> Sistem Pengaduan
+          </a>
+          
           </div>
         </div>
         <div class="col-lg-6 d-lg-flex flex-lg-column align-items-stretch order-1 order-lg-2 hero-img" data-aos="fade-up">
@@ -370,29 +373,27 @@
             </div>
           </div>
 
-          <div class="col-lg-6">
-            <form action="forms/contact.php" method="post" role="form" class="php-email-form" data-aos="fade-up">
-              <div class="form-group">
-                <input placeholder="Your Name" type="text" name="name" class="form-control" id="name" required>
-              </div>
-              <div class="form-group mt-3">
-                <input placeholder="Your Email" type="email" class="form-control" name="email" id="email" required>
-              </div>
-              <div class="form-group mt-3">
-                <input placeholder="Subject" type="text" class="form-control" name="subject" id="subject" required>
-              </div>
-              <div class="form-group mt-3">
-                <textarea placeholder="Message" class="form-control" name="message" rows="5" required></textarea>
-              </div>
-              <div class="my-3">
-                <div class="loading">Loading</div>
-                <div class="error-message"></div>
-                <div class="sent-message">Your message has been sent. Thank you!</div>
-              </div>
-              <div class="text-center"><button type="submit">Send Message</button></div>
-            </form>
+    <!-- ======= MAIL Section ======= -->
+    <div class="col-lg-6">
+      <form action="{{ route('send.email') }}" method="post" >
+          @csrf <!-- Menambahkan token CSRF untuk keamanan -->
+          <div class="form-group">
+              <input placeholder="Your Name" type="text" name="name" class="form-control" id="name" required>
           </div>
-
+          <div class="form-group mt-3">
+              <input placeholder="Your Email" type="email" class="form-control" name="email" id="email" required>
+          </div>
+          <div class="form-group mt-3">
+              <textarea placeholder="Message" class="form-control" name="message" rows="5" required></textarea>
+          </div>
+          <div class="my-3">
+          </div>
+          <div class="text-center">
+              <button type="submit">Send Message</button>
+          </div>
+      </form>
+  </div>
+   <!-- ======= End Mail Section ======= -->
         </div>
 
       </div>

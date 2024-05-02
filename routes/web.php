@@ -9,9 +9,13 @@ use App\Http\Controllers\Pasien\PasienController;
 use App\Http\Controllers\Pasien\DashboardPasienController;
 use App\Http\Controllers\Pasien\KonsultasiController as KonsultasiPasienController;
 
+use App\Http\Controllers\Healthspace\HomepageController;
+use App\Http\Controllers\Aduan\MainController;
 use App\Http\Controllers\Admin\DashboardController as AdminDashboardController;
 use App\Http\Controllers\Admin\PoliController as AdminPoliController;
 use App\Http\Controllers\Admin\DokterController as AdminDokterController;
+use App\Http\Controllers\ContactController;
+use App\Http\Controllers\ContactFormController;
 use App\Http\Controllers\Dokter\ChatKonsultasiController;
 use App\Http\Controllers\Dokter\DashboardDokterController;
 use App\Http\Controllers\Dokter\JadwalPraktikDokterController;
@@ -38,6 +42,11 @@ Route::get('register', function () {
     return view('register');
 });
 
+Route::post('/send-email',[ContactController::class, 'sendEmail'])->name('send.email');
+
+Route::get('/homepage', [HomepageController::class, 'show'])->name('homepage');
+Route::get('/aduan',    [MainController::class, 'index'])->name('aduan-main');
+
 Route::post('postlogin', [AuthController::class, 'postlogin']);
 Route::post('postregister', [AuthController::class, 'postregister']);
 
@@ -46,6 +55,11 @@ Route::get('login-google-auth', [AuthController::class, 'redirectToProvider']);
 
 Route::get('logout', [AuthController::class, 'logout']);
 
+Route::get('/contact', function () {
+    return view('contact');
+})->name('contact');
+
+Route::post('/contact', [ContactFormController::class, 'submit'])->name('contact.submit');
 
 Route::middleware(['role:admin'])->group(function () {
     Route::prefix('admin')->group(function () {

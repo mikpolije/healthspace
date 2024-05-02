@@ -16,7 +16,10 @@
         "laravel/tinker": "^2.7",
         "livewire/livewire": "^2.12",
         "midtrans/midtrans-php": "^2.5",
-        "pusher/pusher-php-server": "^7.2"
+        "nyholm/psr7": "^1.8",
+        "pusher/pusher-php-server": "^7.2",
+        "railsware/mailtrap-php": "^1.8",
+        "symfony/http-client": "^6.2"
     },
     "require-dev": {
         "fakerphp/faker": "^1.9.1",
@@ -64,7 +67,8 @@
         "preferred-install": "dist",
         "sort-packages": true,
         "allow-plugins": {
-            "pestphp/pest-plugin": true
+            "pestphp/pest-plugin": true,
+            "php-http/discovery": true
         }
     },
     "minimum-stability": "stable",
