@@ -222,7 +222,7 @@
                                     </tr>
                                     <tr>
                                         <th>Diagnosa</th>
-                                        <td><p>: ${res.data.name_en}</p> <p class="fst-italic">(${res.data.name_id})</p> </td>
+                                        <td><p>: ${res.data.code}</p> <p class="fst-italic">(${res.data.name_en})</p> </td>
                                     </tr>
                                 </tbody>
                             </table>

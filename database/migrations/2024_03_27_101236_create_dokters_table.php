@@ -29,7 +29,25 @@ return new class extends Migration
             [
                 'user_id'=>3,
                 'poli_id'=>1,
-                'biaya_layanan'=>30000
+                'biaya_layanan'=>15000
+            ],
+
+            [
+                'user_id'=>4,
+                'poli_id'=>1,
+                'biaya_layanan'=>15000
+            ],
+
+            [
+                'user_id'=>5,
+                'poli_id'=>1,
+                'biaya_layanan'=>15000
+            ],
+
+            [
+                'user_id'=>6,
+                'poli_id'=>2,
+                'biaya_layanan'=>15000
             ],
         ]);  
     }

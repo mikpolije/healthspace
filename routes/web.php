@@ -76,6 +76,7 @@ Route::middleware(['role:admin'])->group(function () {
 
         Route::resource('daftar-konsultasi', DaftarKonsultasiController::class);
         Route::get('hasil_konsultasi/{id}', [DaftarKonsultasiController::class,'hasil_konsultasi']);
+        Route::get('riwayat_konsul/{id}', [DaftarKonsultasiController::class,'riwayat_konsultasi']);
 
         Route::resource('invoice', DaftarInvoiceController::class);
 

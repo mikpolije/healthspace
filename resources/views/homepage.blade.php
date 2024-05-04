@@ -73,7 +73,6 @@
             <h1>Klinik Fanda Berkat Medika Panti</h1>
             <h2></h2>
             <a href="login" class="download-btn"><i class="fa-solid fa-comments"></i>HealthSpace Telemedicine</a>
-            <a href="{{ route('aduan-main') }}" class="download-btn"><i class="fa-solid fa-comments"></i> Sistem Pengaduan
           </a>
           
           </div>

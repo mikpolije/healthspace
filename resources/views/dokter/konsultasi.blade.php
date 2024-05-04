@@ -134,7 +134,7 @@
                                 <!-- <i class="speech-to-text bx bx-microphone bx-sm cursor-pointer"></i>
                                 <label for="attach-doc" class="form-label mb-0">
                                     <i class="bx bx-paperclip bx-sm cursor-pointer mx-3 text-body"></i>
-                                    <input type="file" id="attach-doc" hidden="">
+                                    <input type="file" id=" attach-doc" hidden="">
                                 </label> -->
 
                             </div>

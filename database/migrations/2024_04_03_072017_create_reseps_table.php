@@ -17,7 +17,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('catatan_dokter_id')->constrained();
             $table->string('nama_obat');
-            $table->integer('jumlah');
+            $table->string('jumlah');
             $table->string('dosis');
             $table->timestamps();
         });

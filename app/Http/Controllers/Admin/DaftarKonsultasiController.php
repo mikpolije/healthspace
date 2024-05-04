@@ -43,6 +43,17 @@ class DaftarKonsultasiController extends Controller
         return view('admin.catatan_resep',compact('catatan','catatan2','resep'));
     }
 
+    public function riwayat_konsul($id){
+        $isichat = 
+         DB::table('chats')
+        ->leftjoin('users','chats')
+        ->select('isi_chat.*')
+        ->where('konsul_id',$id)->first();
+
+        
+        return view('admin.riwayat_konsul',compact('data'));
+    }
+
 
     /**
      * Show the form for creating a new resource.     *

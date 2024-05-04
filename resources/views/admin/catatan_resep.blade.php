@@ -22,7 +22,7 @@
             <tr>
                 <th>Diagnosa</th>
                 <td>
-                    <p>: {{$catatan->name_id}}</p>
+                    <p>: {{$catatan->code}}</p>
                     <p class="fst-italic">{{$catatan->name_en}}</p>
                 </td>
             </tr>

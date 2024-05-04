@@ -39,9 +39,16 @@
                             <td>{{$v->konsultasi}}</td>
                     
                             <td class="d-flex">
-                                                <a
-                                    href="{{url('admin/hasil_konsultasi',$v->id)}}"><span
-                                        class="badge bg-primary rounded-3 fw-semibold">Catatan Dokter & Resep</span></a>
+                            <a
+                                href="{{url('admin/hasil_konsultasi',$v->id)}}"><span
+                                    class="badge bg-primary rounded-3 fw-semibold">Catatan Dokter & Resep</span></a>
+                                 
+                            </td>
+
+                            <td class="d-flex">
+                            <a
+                                href="{{url('admin/riwayat_konsul',$v->id)}}"><span
+                                    class="badge bg-primary rounded-3 fw-semibold">Riwayat Konsultasi</span></a>
                                  
                             </td>
                         </tr>

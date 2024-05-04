@@ -44,10 +44,38 @@ return new class extends Migration
             'password'=>bcrypt(123),
             'profil'=>'profil.jpg'
         ]);
+        
         User::create([
-            'nama' => 'Dokter Oliv',
+            'nama' => 'dr. Faiqotul M.',
             'role'=>'dokter',
-            'email'=>'dokter@gmail.com',
+            'email'=>'faiqotul@gmail.com',
+            'password'=>bcrypt(123),
+            'profil'=>'doctor.png',
+            'poli_id'=>'1'
+        ]);
+        
+        User::create([
+            'nama' => 'dr. Achmad Fawaid',
+            'role'=>'dokter',
+            'email'=>'achmad@gmail.com',
+            'password'=>bcrypt(123),
+            'profil'=>'doctor.png',
+            'poli_id'=>'1'
+        ]);
+
+        User::create([
+            'nama' => 'dr. Ayunda Afdal',
+            'role'=>'dokter',
+            'email'=>'ayunda@gmail.com',
+            'password'=>bcrypt(123),
+            'profil'=>'doctor.png',
+            'poli_id'=>'1'
+        ]);
+
+        User::create([
+            'nama' => 'drg. Salsabila Q.',
+            'role'=>'dokter',
+            'email'=>'salsabila@gmail.com',
             'password'=>bcrypt(123),
             'profil'=>'doctor.png',
             'poli_id'=>'2'
