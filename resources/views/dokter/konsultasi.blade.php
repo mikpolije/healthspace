@@ -201,7 +201,7 @@
                             </div>
                             <div class="form-group">
                                 <label for="">Jumlah</label>
-                                <input type="number" class="form-control" name="jumlah">
+                                <input type="text" class="form-control" name="jumlah">
                             </div>
                             <div class="form-group">
                                 <label for="">Dosis</label>
