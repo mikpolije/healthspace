@@ -322,7 +322,7 @@ public function handleProviderCallback()
 
 public function kirim(){
     $name = 'elen';
-    $email = 'gologand@gmail.com';
+    $email = 'golongand@gmail.com';
     $data = [
         'name' => $name,
         'body' => "Kepada Pengguna : $name. ",
