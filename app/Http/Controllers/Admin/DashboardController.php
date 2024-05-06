@@ -108,7 +108,7 @@ class DashboardController extends Controller
 
         //garfik pie
 
-        $pendingCount = Pembayarn::where('status_pembayaran', 'pending')->count();
+        $pendingCount = Pembayaran::where('status_pembayaran', 'pending')->count();
         $paidCount = Pembayaran::where('status_pembayaran', 'terbayar')->count();
 
         $totalCount = $pendingCount + $paidCount;
