@@ -9,5 +9,4 @@ class Poli extends Model
 {
     use HasFactory;
     protected $guarded= [];
-
 }
