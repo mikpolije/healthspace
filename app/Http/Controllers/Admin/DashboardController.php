@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Dokter;
 use App\Models\Konsul;
 use App\Models\Pasien;
-use App\Models\poli;
+use App\Models\Poli;
 use App\Models\Pembayaran;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
@@ -16,7 +16,7 @@ class DashboardController extends Controller
 {
     public function index()
     {
-        $poli = poli::count();
+        $poli = Poli::count();
         $dokter = Dokter::count();
         $pasien = Pasien::count();
 
