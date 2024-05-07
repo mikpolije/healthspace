@@ -14,7 +14,7 @@ class ContactController extends Controller
             'email' => $req->email,
            'message' => $req->message
         ];
-        Mail::to('receiver@gmail.com')->send(new ContactMail($data));
+        Mail::to('golongand21@gmail.com')->send(new ContactMail($data));
         return 'Thanks for reaching out';
     }
 }

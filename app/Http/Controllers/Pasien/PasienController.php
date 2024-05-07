@@ -20,7 +20,7 @@ class PasienController extends Controller
     protected function initPaymentGateway()
     {
 	// Set your Merchant Server Key
-	\Midtrans\Config::$serverKey = 'SB-Mid-server-nF0FfCZfWF7W4OeOxvs1ZqA3';
+	\Midtrans\Config::$serverKey = 'SB-Mid-server-jnqEmIRZsWarU3xltlASw5cv';
 	// Set to Development/Sandbox Environment (default). Set to true for Production Environment (accept real transaction).
 	\Midtrans\Config::$isProduction = false;
 	// Set sanitization on (default)
@@ -116,7 +116,7 @@ class PasienController extends Controller
 public function notification_payment(Request $request){
      //setting key server midtrans ya
         // Set your Merchant Server Key
-        \Midtrans\Config::$serverKey = 'SB-Mid-server-nF0FfCZfWF7W4OeOxvs1ZqA3';
+        \Midtrans\Config::$serverKey = 'SB-Mid-server-jnqEmIRZsWarU3xltlASw5cv';
         // Set to Development/Sandbox Environment (default). Set to true for Production Environment (accept real transaction).
         \Midtrans\Config::$isProduction = false;
         // Set sanitization on (default)
