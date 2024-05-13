@@ -85,7 +85,7 @@ class DashboardPasienController extends Controller
 
     protected function initPaymentGateway()
     {
-        \Midtrans\Config::$serverKey = 'SB-Mid-server-jnqEmIRZsWarU3xltlASw5cv';
+        \Midtrans\Config::$serverKey = 'SB-Mid-server-nF0FfCZfWF7W4OeOxvs1ZqA3';
         \Midtrans\Config::$isProduction = false;
         \Midtrans\Config::$isSanitized = true;
         \Midtrans\Config::$is3ds = true;
