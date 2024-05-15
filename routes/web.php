@@ -42,11 +42,6 @@ Route::get('register', function () {
     return view('register');
 });
 
-Route::post('/send-email',[ContactController::class, 'sendEmail'])->name('send.email');
-
-Route::get('/homepage', [HomepageController::class, 'show'])->name('homepage');
-Route::get('/aduan',    [MainController::class, 'index'])->name('aduan-main');
-
 Route::post('postlogin', [AuthController::class, 'postlogin']);
 Route::post('postregister', [AuthController::class, 'postregister']);
 
@@ -60,6 +55,11 @@ Route::get('/contact', function () {
 })->name('contact');
 
 Route::post('/contact', [ContactFormController::class, 'submit'])->name('contact.submit');
+
+Route::post('/send-email',[ContactController::class, 'sendEmail'])->name('send.email');
+
+Route::get('/homepage', [HomepageController::class, 'show'])->name('homepage');
+Route::get('/aduan',    [MainController::class, 'index'])->name('aduan-main');
 
 Route::middleware(['role:admin'])->group(function () {
     Route::prefix('admin')->group(function () {
