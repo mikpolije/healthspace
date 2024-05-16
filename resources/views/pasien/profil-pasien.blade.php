@@ -142,7 +142,7 @@ Edit Profil Pasien</h5>
                 <div class="form-group basic">
                     <div class="input-wrapper">
                         <label class="label" for="name">No Telepon</label>
-                        <input type="number" class="form-control @error('no_telp') is-invalid @enderror" value="{{$users->no_telp }}" name="no_telp" placeholder="No Telepon">
+                        <input type="text" class="form-control @error('no_telp') is-invalid @enderror" value="{{$users->no_telp }}" name="no_telp" placeholder="No Telepon">
                     </div>
                 </div>
 
@@ -151,7 +151,7 @@ Edit Profil Pasien</h5>
                 <div class="form-group basic">
                     <div class="input-wrapper">
                         <label class="label" for="name">Berat Badan</label>
-                        <input type="number" class="form-control @error('berat_badan') is-invalid @enderror" value="{{$users->berat_badan }}"  name="berat_badan"  placeholder="Berat Bada">
+                        <input type="number" class="form-control @error('berat_badan') is-invalid @enderror" value="{{$users->berat_badan }}"  name="berat_badan"  placeholder="Berat Badan">
                     </div>
                 </div>
 
