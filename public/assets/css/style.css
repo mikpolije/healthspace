@@ -689,9 +689,80 @@ section {
   font-size: 14px;
 }
 
+/*--------------------------------------------------------------
+# HealthSpace
+--------------------------------------------------------------*/
 
+.healthspace .content .icon-box {
+  margin-top: 25px;
+}
+
+.healthspace .content .icon-box h4 {
+  font-size: 20px;
+  font-weight: 700;
+  margin: 5px 0 10px 60px;
+}
+
+.healthspace .content .icon-box i {
+  font-size: 48px;
+  float: left;
+  color: #3C7168;
+}
+
+.healthspace .content .icon-box p {
+  font-size: 15px;
+  color: #D3EDE8;
+  margin-left: 60px;
+}
+
+/* Visi Section */
+.visi .container {
+  padding-bottom: 100px; /* Anda dapat menyesuaikan nilai ini sesuai kebutuhan */
+}
+.visi .member-info img {
+  max-width: 100%;
+  margin-top: 20px;
+  border-radius: 8px;
+}
+
+/* Fitur Section */
+.fitur {
+  padding: 60px 0;
+  background: #D3EDE8;
+}
+
+.fitur .section-title {
+  text-align: center;
+  padding-bottom: 20px;
+}
 
 /*--------------------------------------------------------------
+# Fitur
+--------------------------------------------------------------*/
+
+.fitur .icon-box {
+  background: #fff;
+  padding: 20px;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 4px 25px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  transition: all 0.3s ease-in-out;
+  text-align: center;
+}
+
+.fitur .icon-box img {
+  max-width: 100%;
+  border-radius: 8px;
+}
+
+.fitur .icon-box p {
+  margin-top: 15px;
+  font-size: 18px;
+  font-weight: 600;
+  color: #333;
+}
+
 
 
 /*--------------------------------------------------------------

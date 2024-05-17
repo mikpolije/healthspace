@@ -5,6 +5,11 @@
     .dokter-list {
         cursor: pointer;
     }
+    
+    .scrollable {
+        max-height: 200px; /* Atur tinggi maksimal sesuai kebutuhan Anda */
+        overflow-y: auto;  /* Mengaktifkan scrollbar vertikal jika konten melebihi tinggi maksimal */
+    }
 </style>
 @endpush
 
@@ -100,12 +105,12 @@
             <div class="col-4">
                 <div class="card h-100">
                     <h6 class="fw-bold mt-4 mx-3 mb-2">Konsultasi Terbaru Anda</h6>
-                    <div class="konsultasi mb-2">
+                    <div class="konsultasi mb-2 scrollable">
                     @if($kons->isEmpty())
-    <div class="bg-secondary w-100 d-flex flex-row border-bottom py-1 px-1">
-        <span class="text-white">Tidak Ada chat</span>
-    </div>
-@else
+            <div class="bg-secondary w-100 d-flex flex-row border-bottom py-1 px-1">
+                <span class="text-white">Tidak Ada chat</span>
+            </div>
+        @else
                     @foreach($kons as $c)
                         <div class="bg-secondary w-100 d-flex flex-row border-bottom py-1 px-1">
                             <div class="col-2">

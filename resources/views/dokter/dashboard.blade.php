@@ -5,6 +5,11 @@
     .dokter-list {
         cursor: pointer;
     }
+
+    .scrollable {
+        max-height: 200px; /* Atur tinggi maksimal sesuai kebutuhan Anda */
+        overflow-y: auto;  /* Mengaktifkan scrollbar vertikal jika konten melebihi tinggi maksimal */
+    }
 </style>
 @endpush
 
@@ -35,7 +40,7 @@
     <div class="card bg-success-dark text-white">
         <h3 class="card-header">Pesan Masuk</h3>
            
-        <div class="card bg-secondary">
+        <div class="card bg-secondary scrollable">
         @if($chat_terbaru->isEmpty())
     <div class="bg-secondary w-100 d-flex flex-row border-bottom py-1 px-1">
         <span class="text-white">Tidak Ada chat</span>
