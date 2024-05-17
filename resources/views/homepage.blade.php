@@ -303,9 +303,56 @@
         </div>
 
       </div>
+    
     </section>
     <!-- End healthspace Features Section -->
 
+        <!-- ======= Visi Misi HS Section ======= -->
+        <section id="visi" class="visi">
+          <div class="container">
+    
+            <div class="section-title">
+              <h2>Visi Misi HealthSpace</h2>
+              <p></p>
+            </div>
+    
+            <div class="row">
+    
+              <div class="col-lg-6 d-flex">
+                <div class="member flex-grow-1 d-flex flex-column align-items-start">
+                  
+                  <div class="member-info">
+                    <h4>Visi HealthSpace</h4>
+                    <span></span>
+                    <br> 
+                    <p>Terwujudnya masyarakat sehat yang melek digital melalui telemedicine</p>
+                  </div>
+                </div>
+              </div>
+    
+              <div class="col-lg-6 mt-4 mt-lg-0 d-flex">
+                <div class="member flex-grow-1 d-flex flex-column align-items-start">
+                  
+                  <div class="member-info">
+                    <h4>Misi HealthSpace</h4>
+                    <span></span>
+                    <br>
+                    <ul>
+                      <li>Menjadikan Klinik sebagai layanan dasar kesehatan yang profesional dan berkualitas</li>
+                      <li>Meningkatkan pengembangan sumber daya manusia di klinik</li>
+                      <li>Menjadikan rujukan pelayanan kesehatan yang menyeluruh bagi masyarakat</li>
+                      <li>Menjadi mitra masyarakat sebagai layanan edukasi kesehatan menuju masyarakat yang sehat.</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+    
+            </div>  
+    
+          </div>
+    </div>
+        <!-- End Visi Misi HS Section -->
+    
 
     <!-- ======= Gallery Section ======= -->
     <section id="gallery" class="gallery">
