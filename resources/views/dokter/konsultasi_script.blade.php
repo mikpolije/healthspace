@@ -30,14 +30,18 @@
                     var res = data.results.map(function (item) {
                         return {
                             id: item.code,
-                            text: item.name_en
+                            text: item.code + ' - ' + item.name_en
                         };
                     });
                     return {
-                        results: res
+                        results: res,
+                        pagination: {
+                            more: data.pagination.more
+                        }
                     };
-                },
-                cache: true
+},
+cache: true
+
             }
         });
 

@@ -199,7 +199,7 @@ class KonsultasiController extends Controller
 
                     $offset = ($page - 1) * $resultCount;
 
-                    $breeds = icds::where('name_en', 'LIKE',  '%' . $request->term. '%')->orderBy('name_en')->skip($offset)->take($resultCount)->get();
+                    $breeds = icds::where('code', 'LIKE',  '%' . $request->term. '%')->orderBy('code')->skip($offset)->take($resultCount)->get();
 
                     $count = icds::count();
                     $endCount = $offset + $resultCount;
