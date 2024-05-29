@@ -110,10 +110,14 @@
                                 </div>
                                 <button class="btn btn-success px-5" type="submit">Sign Up</button>
                             </div>
+                            <div class="text-center mt-2 mb-2">
+                                <span>Have an Account Yet? <a href="{{url('login')}}">Login</a></span>
+                            </div>
 
-                            <button type="button" class="bg-white float-end border rounded-circle px-3 py-3">
-                                <i class='bx bx-chat'></i>
-                            </button>
+                            <div class="text-center mt-2 mb-2">
+                                <a href="{{url('/')}}">Kliknik Fanda Berkat Medika Panti</a>
+                            </div>
+                            
                         </form>
 
                     </div>

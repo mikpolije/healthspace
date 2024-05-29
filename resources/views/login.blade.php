@@ -115,9 +115,11 @@
                                 <span>No Account Yet? <a href="{{url('register')}}">Sign Up</a></span>
                             </div>
 
-                            <button type="button" class="bg-white float-end border rounded-circle px-3 py-3">
-                                <i class='bx bx-chat'></i>
-                            </button>
+                            <div class="text-center mt-2 mb-2">
+                                <a href="{{url('/')}}">Kliknik Fanda Berkat Medika Panti</a>
+                            </div>
+
+                            
                         </form>
 
                     </div>
