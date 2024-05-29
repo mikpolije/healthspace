@@ -116,7 +116,7 @@
                             </div>
 
                             <div class="text-center mt-2 mb-2">
-                                <a href="{{url('/')}}">Kliknik Fanda Berkat Medika Panti</a>
+                                <a href="{{url('/')}}">Klinik Fanda Berkat Medika Panti</a>
                             </div>
 
                             
