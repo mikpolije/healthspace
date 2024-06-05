@@ -11,18 +11,18 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Str;
+use GuzzleHttp\Client;
 
 class PasienController extends Controller
 {
     //
-
     
     protected function initPaymentGateway()
     {
-    	// Set your Merchant Server Key
-	\Midtrans\Config::$serverKey = 'SB-Mid-server-nF0FfCZfWF7W4OeOxvs1ZqA3';
+	// Set your Merchant Server Key
+	\Midtrans\Config::$serverKey = 'Mid-server-jqjEGQ6xOduDm278qtj4Eez_';
 	// Set to Development/Sandbox Environment (default). Set to true for Production Environment (accept real transaction).
-	\Midtrans\Config::$isProduction = false;
+	\Midtrans\Config::$isProduction = true;
 	// Set sanitization on (default)
 	\Midtrans\Config::$isSanitized = true;
 	// Set 3DS transaction for credit card to true
@@ -115,11 +115,10 @@ class PasienController extends Controller
 
 public function notification_payment(Request $request){
      //setting key server midtrans ya
-        \Midtrans\Config::$clientKey = 'SB-Mid-client-bDo4QQ4exVny80Af';
         // Set your Merchant Server Key
-        \Midtrans\Config::$serverKey = 'SB-Mid-server-nF0FfCZfWF7W4OeOxvs1ZqA3';
+        \Midtrans\Config::$serverKey = 'Mid-server-jqjEGQ6xOduDm278qtj4Eez_';
         // Set to Development/Sandbox Environment (default). Set to true for Production Environment (accept real transaction).
-        \Midtrans\Config::$isProduction = false;
+        \Midtrans\Config::$isProduction = true;
         // Set sanitization on (default)
         \Midtrans\Config::$isSanitized = true;
         // Set 3DS transaction for credit card to true
