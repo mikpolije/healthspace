@@ -58,8 +58,8 @@ class PasienController extends Controller
             'customer_details' => $customerDetails,
             'expiry' => [
                 'start_time' => date('Y-m-d H:i:s T'),
-                'unit' => 'days',
-                'duration' => 7,
+                'unit' => 'minute',
+                'duration' => 30,
             ],
         ];
         // return $params['transaction_details']['order_id'];
