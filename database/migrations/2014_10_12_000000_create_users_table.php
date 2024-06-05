@@ -33,14 +33,14 @@ return new class extends Migration
         User::create([
             'nama' => 'Admin',
             'role' =>'admin',
-            'email' =>'admin@gmail.com',
+            'email' =>'admin@gmail.co',
             'password'=>bcrypt(123),
             'profil'=>'profil.jpg'
         ]);
         User::create([
             'nama' => 'Pasien Elen',
             'role'=>'pasien',
-            'email'=>'pasien@gmail.com',
+            'email'=>'pasien@gmail.co',
             'password'=>bcrypt(123),
             'profil'=>'profil.jpg'
         ]);
@@ -48,7 +48,7 @@ return new class extends Migration
         User::create([
             'nama' => 'dr. Faiqotul M.',
             'role'=>'dokter',
-            'email'=>'faiqotul@gmail.com',
+            'email'=>'faiqotul@gmail.co',
             'password'=>bcrypt(123),
             'profil'=>'doctor.png',
             'poli_id'=>'1'
@@ -57,7 +57,7 @@ return new class extends Migration
         User::create([
             'nama' => 'dr. Achmad Fawaid',
             'role'=>'dokter',
-            'email'=>'achmad@gmail.com',
+            'email'=>'achmad@gmail.co',
             'password'=>bcrypt(123),
             'profil'=>'doctor.png',
             'poli_id'=>'1'
@@ -66,7 +66,7 @@ return new class extends Migration
         User::create([
             'nama' => 'dr. Ayunda Afdal',
             'role'=>'dokter',
-            'email'=>'ayunda@gmail.com',
+            'email'=>'ayunda@gmail.co',
             'password'=>bcrypt(123),
             'profil'=>'doctor.png',
             'poli_id'=>'1'
@@ -75,7 +75,7 @@ return new class extends Migration
         User::create([
             'nama' => 'drg. Salsabila Q.',
             'role'=>'dokter',
-            'email'=>'salsabila@gmail.com',
+            'email'=>'salsabila@gmail.co',
             'password'=>bcrypt(123),
             'profil'=>'doctor.png',
             'poli_id'=>'2'
