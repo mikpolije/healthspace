@@ -17,8 +17,6 @@ return new class extends Migration
         Schema::create('dokters', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->constrained();
-            // $table->string('email')->constrained();
-            $table->string('password');
             $table->foreignId('poli_id')->constrained();
             // $table->string('hari_praktik');
             // $table->string('spesialis');
@@ -30,32 +28,24 @@ return new class extends Migration
         DB::table('dokters')->insert([
             [
                 'user_id'=>3,
-                //'email' => 'faiqotul@gmail.co',
-                'password'=>bcrypt(123),
                 'poli_id'=>1,
                 'biaya_layanan'=>15000
             ],
 
             [
                 'user_id'=>4,
-                //'email' => 'achmad@gmail.co',
-                'password'=>bcrypt(123),
                 'poli_id'=>1,
                 'biaya_layanan'=>15000
             ],
 
             [
                 'user_id'=>5,
-                //'email' => 'ayunda@gmail.co',
-                'password'=>bcrypt(123),
                 'poli_id'=>1,
                 'biaya_layanan'=>15000
             ],
 
             [
                 'user_id'=>6,
-                //'email' => 'salsabila@gmail.co',
-                'password'=>bcrypt(123),
                 'poli_id'=>2,
                 'biaya_layanan'=>15000
             ],

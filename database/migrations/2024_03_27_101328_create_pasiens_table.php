@@ -18,8 +18,6 @@ return new class extends Migration
         Schema::create('pasiens', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->constrained();
-            //$table->string('email')->constrained();
-            $table->string('password');
             $table->string('jenis_kelamin')->nullable();
             $table->string('no_telp')->nullable();
             $table->date('tanggal_lahir')->nullable();
@@ -31,15 +29,13 @@ return new class extends Migration
 
         DB::table('pasiens')->insert([
             [
-                'user_id'=>2,
-                //'email' => 'pasien@gmail.co',
-                'password'=>bcrypt(123),
+                'user_id'=>2, 
                 'jenis_kelamin'=>'Perempuan',
                 'no_telp'=>'08213131',
                 'tanggal_lahir'=>'2003-07-07',
                 'alamat'=>'Jakarta',
                 'berat_badan'=>35,
-                'tinggi_badan'=>175           
+                'tinggi_badan'=>175,          
             ],
         ]);  
     }
