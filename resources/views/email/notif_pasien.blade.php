@@ -6,7 +6,7 @@
     <p style="color:#00000;padding:3px; font-size: 14px;">
         {{$body}}<br>
    
-        <p style="color:#00000; text-align:center;"> Selamat Pembayaran Berhasil dan Anda Lanjut Konsulatsi ke Dokter<br>
+        <p style="color:#00000; text-align:center;"> Selamat Pembayaran Berhasil dan Anda Lanjut Konsultasi ke Dokter<br>
             <a style="background-color: #E0EFEA;
         border: none;
         border-radius: 5px;
