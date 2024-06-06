@@ -137,18 +137,10 @@ public function notification_payment(Request $request){
         if ($notification->transaction_status == "settlement") {
             $p = Pembayaran::where('kode_pembayaran', $notification->order_id)->first();
 
-        if($notification->va_number=!null){
-            $bank = $notification['va_numbers'][0]['bank'];
-               } else if (($notification->issuer!=null)) 
-               {
-                   $bank = $notification['issuer'];
-               }
-        
-               
             $p->update([
                 'status_pembayaran' => 'terbayar',
                 'tanggal_pembayaran' => date('Y-m-d'),
-                'metode_pembayaran'=>$bank
+                'metode_pembayaran'=>$notification->va_numbers[0]->bank
 
             ]);
             $k = Konsul::where('id',$p->konsul_id)->first();
