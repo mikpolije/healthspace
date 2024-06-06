@@ -25,7 +25,7 @@
                             <th>Alamat</th>
                             <th>TB</th>
                             <th>BB</th>
-                            <!-- <th width="25%">Actions</th> -->
+                            <th width="25%">Actions</th>
 
                         </tr>
                     </thead>
@@ -43,10 +43,12 @@
                                 <a class="dropdown-item me-2" href="{{ url('admin/daftar-pasien/'.$v->id) }}">
                                     <i class="bx bx-edit-alt me-1"></i> 
                                 </a>
+                                </td>  -->
+                            <td class="d-flex">
                                 <a class="dropdown-item" href="{{ url('admin/daftar-pasien/hapus/'.$v->id) }}">
                                     <i class="bx bx-trash me-1"></i> 
                                 </a>
-                            </td> -->
+                            </td>
 
 
                         </tr>

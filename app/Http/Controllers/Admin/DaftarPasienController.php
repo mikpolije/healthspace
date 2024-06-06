@@ -98,13 +98,13 @@ class DaftarPasienController extends Controller
         User::where('id',$dokter->user_id)->update($data0);
    
         
-        return redirect('admin/dokter')
-        ->with('success','Data Dokter Berhasil Diupdate');
+        return redirect('admin/pasien')
+        ->with('success','Data Pasien Berhasil Diupdate');
 
     }
 
     public function destroy($id){
-        $d =Dokter::where('id',$id)->first();
+        $d =Pasien::where('id',$id)->first();
         if($d){
             $d->delete();
             // User::where('id',$d->user_id)->delete();
@@ -112,7 +112,7 @@ class DaftarPasienController extends Controller
         
 
         return redirect()->back()
-        ->with('success','Data Dokter Berhasil Dihapus');
+        ->with('success','Data Pasien Berhasil Dihapus');
     }
 
 }

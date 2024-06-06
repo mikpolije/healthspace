@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Controllers\Pasien\PasienController;
 use App\Models\Dokter;
 use App\Models\Konsul;
 use App\Models\Pasien;
@@ -169,10 +170,16 @@ class AuthController extends Controller
         
         $data0 = $request->validate([
             'nama'=>'required',
-            // 'email'=>'required',    
+            'email'=>'required',
+            //'password' => 'required', // Ensure password is confirmed
+                
         
         ]);
         
+        if ($request->filled('password')) {
+            $data0['password'] = bcrypt($request->password);
+        } 
+
         $data = $request->validate([
             'tanggal_lahir'=>'required',
             'alamat'=>'required',
@@ -199,6 +206,7 @@ class AuthController extends Controller
     //     $data0['password']=bcrypt($request->password);
     //     // return $request;
     // }
+        $pasien = Pasien::findOrFail($id);
         $pasien->update($data);
       
         // return $req;
@@ -231,11 +239,18 @@ class AuthController extends Controller
         
         $data0 = $request->validate([
             'nama'=>'required',
-            'poli_id'=>'required'
-            // 'email'=>'required',    
+            'email'=>'required',
+            //'password' => 'required', // Ensure password is confirmed
+            'poli_id'=>'required',
+                
         
         ]);
-        
+
+        // Cek apakah password diubah
+        if ($request->filled('password')) {
+            $data0['password'] = bcrypt($request->password);
+        }     
+
         $data = $request->validate([
             // 'hari_praktik'=>'required',
             // 'jam_praktik'=>'required',
@@ -257,7 +272,7 @@ class AuthController extends Controller
     
        $d = Dokter::where('id',$id)->first();
 
-
+        $d = Dokter::findOrFail($id);
         $d->update($data);
       
      
@@ -266,7 +281,7 @@ class AuthController extends Controller
    
         
         return redirect('dokter/profil-dokter')
-        ->with('success',' Profil Pasien Berhasil Diupdate');
+        ->with('success',' Profil Dokter Berhasil Diupdate');
 
     }
 
