@@ -159,13 +159,15 @@
             datasets: [{
                 data: {!! json_encode($data2['data']) !!},
                 backgroundColor: [
-                    'rgba(255, 99, 132, 0.5)', // Merah untuk pending
+                    'rgba(255, 215, 0, 0.5)', // Kuning untuk pending
                     'rgba(54, 162, 235, 0.5)', // Biru untuk terbayar
+                    'rgba(255, 99, 132, 0.5)' // Merah untuk cancel
                 ],
                 borderColor: [
-                    'rgba(255, 99, 132, 1)', // Merah untuk pending
-                    'rgba(54, 162, 235, 1)', // Biru untuk terbayar
-                ],
+                'rgba(255, 215, 0, 0.5)', // Kuning untuk pending
+                'rgba(54, 162, 235, 0.5)', // Biru untuk terbayar
+                'rgba(255, 99, 132, 0.5)' // Merah untuk cancel                
+        ],
                 borderWidth: 1
             }]
         },

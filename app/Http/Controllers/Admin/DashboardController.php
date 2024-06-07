@@ -110,17 +110,20 @@ class DashboardController extends Controller
 
         $pendingCount = Pembayaran::where('status_pembayaran', 'pending')->count();
         $paidCount = Pembayaran::where('status_pembayaran', 'terbayar')->count();
+        $cancelCount = Pembayaran::where('status_pembayaran', 'cancel')->count();
 
-        $totalCount = $pendingCount + $paidCount;
+        $totalCount = $pendingCount + $paidCount + $cancelCount;
 
         // Menghitung persentase
         $pendingPercentage = $totalCount > 0 ? ($pendingCount / $totalCount) * 100 : 0;
         $paidPercentage = $totalCount > 0 ? ($paidCount / $totalCount) * 100 : 0;
+        $cancelPercentage = $totalCount > 0 ? ($cancelCount / $totalCount) * 100 : 0;
+
 
         // Membuat array data untuk digunakan dalam grafik pie chart
         $data2 = [
-            'labels' => ['Pending', 'Terbayar'],
-            'data' => [$pendingPercentage, $paidPercentage],
+            'labels' => ['Pending', 'Terbayar', 'Cancel'],
+            'data' => [$pendingPercentage, $paidPercentage, $cancelPercentage],
         ];
         // return $data2;
         return view('admin.dashboard', compact('poli', 'pasien', 'dokter', 'data','data2'));
