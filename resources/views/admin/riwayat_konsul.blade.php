@@ -4,7 +4,7 @@
 
 
 <div class="card-header bg-success-dark">
-    <h6 class="card-title text-white">Riwayat Konsultasi 
+    <h6 class="card-title text-white">Catatan Dokter dan Resep 
 
     </h6>
 </div>

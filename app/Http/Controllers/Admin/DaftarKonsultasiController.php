@@ -72,20 +72,28 @@ class DaftarKonsultasiController extends Controller
         return view('admin.daftar-konsultasi',compact('data'));
     }
 
-    public function hasil_konsultasi($id){
-        $catatan = 
-         DB::table('catatan_dokters')
-        ->leftjoin('icds','catatan_dokters.diagnosa','icds.code')
-        ->select('icds.*','catatan_dokters.*')
-        ->where('konsul_id',$id)->first();
-
-        $catatan2 = CatatanDokter::where('konsul_id',$id)->orderBy('id','desc')->first();
-
-
-        $resep = Resep::where('catatan_dokter_id',$catatan2->id)->get();
-        // return [$catatan,$catatan2,$resep];
+    public function hasil_konsultasi($id)
+    {
+        $catatan = DB::table('catatan_dokters')
+            ->leftjoin('icds', 'catatan_dokters.diagnosa', 'icds.code')
+            ->select('icds.*', 'catatan_dokters.*')
+            ->where('konsul_id', $id)
+            ->first();
     
-        return view('admin.catatan_resep',compact('catatan','catatan2','resep'));
+        $catatan2 = CatatanDokter::where('konsul_id', $id)->orderBy('id', 'desc')->first();
+    
+        if ($catatan2) {
+            $resep = Resep::where('catatan_dokter_id', $catatan2->id)->get();
+            return view('admin.catatan_resep', compact('catatan', 'catatan2', 'resep'));
+        } else {
+            // Jika data catatan2 tidak ditemukan, tampilkan blade data_null
+            return view('admin.no_catatan_resep');
+        }
+    }
+
+    public function no_catatan_resep($id)
+    {
+        return view('admin.no_catatan_resep', ['id' => $id]);
     }
 
 
