@@ -68,7 +68,7 @@
 
             <div class="w-100 mt-3">
                 @if($pemesanan->status_pembayaran == "pending")
-                    <a href="{{route('cancel.payment', $pemesanan->id)}}" class="btn btn-danger float-start">Cancel Payment</a>
+                    <a href="{{route('cancel.payment', $pemesanan->id)}}" class="btn btn-danger float-start">Batalkan Transaksi</a>
                     <button class="btn btn-success float-end" disabled><i class="menu-icon tf-icons bx bx-chat"></i>  Lanjutkan Chat</button>
                 @else
                     <a href="{{url('pasien/konsultasi')}}" class="btn btn-success float-end"> <i class="menu-icon tf-icons bx bx-chat"></i>  Lanjutkan Chat</a>
