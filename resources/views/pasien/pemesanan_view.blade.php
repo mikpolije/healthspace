@@ -3,15 +3,20 @@
 @push('css')
 
 <style>
-    #snap-midtrans{
-        display: block; height: inherit; width: inherit; border: none; min-height: 600px !important; min-width: 320px; border-radius: inherit;"
+    #snap-midtrans {
+        display: block; 
+        height: inherit; 
+        width: inherit; 
+        border: none; 
+        min-height: 600px !important; 
+        min-width: 320px; 
+        border-radius: inherit;"
     }
 </style>
 
 @endpush
 
 @section('content')
-
 
 <div class="container-xxl flex-grow-1 container-p-y">
 
@@ -21,7 +26,6 @@
             <div class="w-100 h-100">
                 <iframe src="{{$pemesanan->payment_url}}" frameborder="0" id="snap-midtrans"></iframe>
             </div>
-
         </div>
 
         <div class="col-md-7">
@@ -30,7 +34,6 @@
             <p>Kode Booking : <span class="fw-bold float-end">{{$pemesanan->kode_pembayaran}}</span></p>
             <p>Konsultasi : <span class="fw-bold float-end">{{$konsultasi->konsultasi}}</span></p>
             <p>Nama Dokter : <span class="fw-bold float-end">{{$konsultasi->nama}}</span></p>
-           
 
             <hr>
 
@@ -48,7 +51,7 @@
                         </div>
                         <div class="col-9">
                             <h6 class="fw-bold text-white">Cek kembali metode pembayaranmu</h6>
-                            <p class="text-white">Pastikan kamu mengecek kembali metode pembayarmu untuk menghindari
+                            <p class="text-white">Pastikan kamu mengecek kembali metode pembayaranmu untuk menghindari
                                 adanya kesalahan transfer.</p>
                         </div>
                         <div class="col-3 text-center">
@@ -56,7 +59,7 @@
                         </div>
                         <div class="col-9">
                             <h6 class="fw-bold text-white">Cek kembali metode pembayaranmu</h6>
-                            <p class="text-white">Pastikan kamu mengecek kembali metode pembayarmu untuk menghindari
+                            <p class="text-white">Pastikan kamu mengecek kembali metode pembayaranmu untuk menghindari
                                 adanya kesalahan transfer.</p>
                         </div>
                     </div>
@@ -64,11 +67,12 @@
             </div>
 
             <div class="w-100 mt-3">
-               @if($pemesanan->status_pembayaran == "pending")
-               <button class="btn btn-success float-end" disabled> <i class="menu-icon tf-icons bx bx-chat"></i>  Lanjutkan Chat</button>
-               @else
-               <a href="{{url('pasien/konsultasi')}}" class="btn btn-success float-end"> <i class="menu-icon tf-icons bx bx-chat"></i>  Lanjutkan Chat</a>
-               @endif
+                @if($pemesanan->status_pembayaran == "pending")
+                    <a href="{{route('cancel.payment', $pemesanan->id)}}" class="btn btn-danger float-start">Cancel Payment</a>
+                    <button class="btn btn-success float-end" disabled><i class="menu-icon tf-icons bx bx-chat"></i>  Lanjutkan Chat</button>
+                @else
+                    <a href="{{url('pasien/konsultasi')}}" class="btn btn-success float-end"> <i class="menu-icon tf-icons bx bx-chat"></i>  Lanjutkan Chat</a>
+                @endif
             </div>
 
         </div>
@@ -76,15 +80,13 @@
 
 </div>
 
-
-
 @endsection
 
 @push('js')
 
 <script>
-    function iFrameResize(){
-        
+    function iFrameResize() {
+        // You can add iframe resizing logic here if needed
     }
 </script>
 

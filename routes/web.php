@@ -132,7 +132,7 @@ Route::get('/pemesanan', function () {
 
 Route::post('proses-pemesanan', [PasienController::class, 'prosesbooking']);
 Route::get('pemesanan-pending', [PasienController::class, 'bookingpending'])->name('pemesanan-pending');
-Route::get('pemesanan-cancel/{id}', [PasienController::class, 'bookingcancel'])->name('pemesanan-cancel');
+Route::get('cancel-payment/{id}', [PasienController::class, 'bookingcancel'])->name('cancel.payment');
 
 
     Route::resource('dokter/jadwal_praktiks', JadwalPraktikDokterController::class);

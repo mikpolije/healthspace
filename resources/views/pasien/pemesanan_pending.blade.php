@@ -1,9 +1,9 @@
 
 
-  <div class="content-wrapper">
-  
+<div class="content-wrapper">
+
   @midtransCardScript
-  
+   
     <!-- Main content -->
     <section class="content">
       <div class="container-fluid">
@@ -25,7 +25,7 @@
                 
                 <h1>Menunggu Pembayaran</h1>
                 <br><br>
-                X
+            x
                 <div class="row">
                   <div class="col-lg-6">
                       <div class="card-body p-0">
@@ -39,11 +39,11 @@
                         
                           </table><br>
                           <a href="{{route('pemesanan-cancel',$status->id)}}"><button class="btn btn-danger">Batalkan Booking</button></a>
-                          <a href="{{$status->payment_url}}"> <button id="pay-button" class="btn btn-primary" onclick="handlePayment()">Bayar Sekarang</button>
+                          <a href="{{$status->payment_url}}"> <button class="btn btn-primary">Bayar Sekarang</button></a><br><br>
                       </div><br>
                     </div>
                   </div>     
-                
+             
 
                
               </div>
@@ -56,7 +56,7 @@
          
     <!-- /.content -->
   </div>
- 
+
 
 
 
@@ -65,25 +65,20 @@
         <script type="text/javascript">
             document.getElementById('pay-button').onclick = function(){
                 // SnapToken acquired from previous step
-                var snapToken = "{{ $status->payment_token }}";
-                    if (snapToken) {
-                        snap.pay(snapToken, {
-                            // Optional
-                            onSuccess: function(result){
-                                console.log('Payment successful:', result);
-                            },
-                            // Optional
-                            onPending: function(result){
-                                console.log('Payment pending:', result);
-                            },
-                            // Optional
-                            onError: function(result){
-                                console.error('Payment error:', result);
-                            }
-                        });
-                    } else {
-                        console.error('Snap Token is not available');
+                snap.pay('#', {
+                    // Optional
+                    onSuccess: function(result){
+                        document.getElementById('result-json').innerHTML += JSON.stringify(result, null, 2);
+                    },
+                    // Optional
+                    onPending: function(result){
+                        document.getElementById('result-json').innerHTML += JSON.stringify(result, null, 2);
+                    },
+                    // Optional
+                    onError: function(result){
+                      document.getElementById('result-json').innerHTML += JSON.stringify(result, null, 2);
                     }
-                };
+                });
+            };
         </script>
 

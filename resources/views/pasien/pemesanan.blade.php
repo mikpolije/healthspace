@@ -1,63 +1,19 @@
+@extends('layouts.main')
 
-
-  <div class="content-wrapper">
-  
-
-    <!-- Main content -->
-    <section class="content">
-      <div class="container-fluid">
-      
-        <div class="row">
-          <!-- Left col -->
-          <section class="col-lg-12 connectedSortable">
-            <!-- Custom tabs (Charts with tabs)-->
+@section('content')
+<div class="container-xxl flex-grow-1 container-p-y">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
             <div class="card">
-              
-              <div class="card-body">
-                           
+                <div class="card-header">Payment Cancelled</div>
 
-                      <div class="row">
-                      <div class="col-lg-6"><br>
-                        <div class="card-body p-0">
-                            <table class="table table-striped">
-                          
-                            <tr>
-                              <th>Nama </th>
-                              <td>Oliv</td>
-                            </tr>    
-
-                        
-                            </table>
-                        </div><br>
+                <div class="card-body">
+                    <div class="alert alert-danger" role="alert">
+                        Your payment has been cancelled.
                     </div>
-              <div class="col-lg-6">
-                <form method="post" action="{{url('proses-pemesanan')}}" enctype="multipart/form-data">
-                   
-                                   
-                        {{csrf_field()}}
-
-                        
-
-                        
-                         
-            
-            <button class="btn btn-primary" type="Submit">Checkout</button>
-                </form>
-            </div>
-                <br>
-              
                 </div>
-              </div>
-
-             
-               
-              </div><!-- /.card-body -->
             </div>
-            <!-- /.card -->
-
-          </section>
-          <!-- /.Left col -->
-          <!-- right col (We are only adding the ID to make the widgets sortable)-->
-         
-    <!-- /.content -->
-  </div>
+        </div>
+    </div>
+</div>
+@endsection

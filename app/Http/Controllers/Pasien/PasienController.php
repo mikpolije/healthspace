@@ -11,7 +11,6 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Str;
-use GuzzleHttp\Client;
 
 class PasienController extends Controller
 {
@@ -89,9 +88,14 @@ class PasienController extends Controller
 
         public function bookingcancel($id){
 
-        Pembayaran::where('id',$id)->first()->update([
-            'status_pembayaran'=>'cancel'
-        ]);
+         // Find the payment record by its ID
+         $payment = Pembayaran::findOrFail($id);
+
+         // Update the payment status to 'cancel'
+         $payment->update([
+             'status_pembayaran' => 'cancel'
+         ]);
+         
         return redirect('/pemesanan')->with('success', 'Berhasil Membatalkan');
 }
 
