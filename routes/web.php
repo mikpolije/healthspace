@@ -84,6 +84,10 @@ Route::middleware(['role:admin'])->group(function () {
         Route::get('riwayat-konsultasi/{pasien}',[DaftarKonsultasiController::class,'index_chat']);
         
         Route::get('getchat/{id}/{pasien}',[DaftarKonsultasiController::class,'getChat_riwayat']);
+
+        Route::get('/daftar-invoice', [DaftarInvoiceController::class, 'index'])->name('daftar-invoice.index');
+
+        Route::get('admin/daftar-pasien', [DaftarPasienController::class, 'index'])->name('admin.daftar-pasien.index');
     });
 });
 

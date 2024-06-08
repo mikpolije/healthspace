@@ -11,15 +11,27 @@ use Illuminate\Support\Facades\DB;
 
 class DaftarPasienController extends Controller
 {
-    public function index()
-    {
-        $data =DB::table('pasiens')
-        ->leftJoin('users','pasiens.user_id','users.id')
-        ->select('users.nama','pasiens.*')
-        ->orderBy('id','desc')->get();
-        // return $data;
-        return view('admin.daftar-pasien',compact('data'));
+    public function index(Request $request)
+{
+    $query = DB::table('pasiens')
+             ->leftJoin('users', 'pasiens.user_id', '=', 'users.id')
+             ->select('users.nama', 'pasiens.*')
+             ->orderBy('pasiens.created_at', 'desc'); // Order by the created_at timestamp in descending order
+    
+    // Check if search parameters are provided
+    if ($request->has('search')) {
+        $search = $request->search;
+        // Add conditions for searching name or gender
+        $query->where('users.nama', 'like', '%' . $search . '%')
+              ->orWhere('pasiens.jenis_kelamin', 'like', '%' . $search . '%');
     }
+
+    // Get the filtered results
+    $data = $query->get();
+
+    return view('admin.daftar-pasien', compact('data'));
+}
+
 
     public function create()
     {

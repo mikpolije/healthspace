@@ -60,18 +60,28 @@ class DaftarKonsultasiController extends Controller
          ]);
      }
  
-    public function index()
-    {
-        //
-        $data = DB::table('konsuls')
-        ->leftjoin('users','konsuls.pasien_id','users.id')
-        ->leftjoin('users as dokter','konsuls.dokter_id','dokter.id')
-        ->select('users.nama','dokter.nama as nama_dokter','konsuls.*')
-        ->get();
-// return $data;
-        return view('admin.daftar-konsultasi',compact('data'));
-    }
-
+     public function index(Request $request)
+     {
+         $search = $request->input('search');
+     
+         $query = DB::table('konsuls')
+             ->leftJoin('users', 'konsuls.pasien_id', 'users.id')
+             ->leftJoin('users as dokter', 'konsuls.dokter_id', 'dokter.id')
+             ->select('users.nama', 'dokter.nama as nama_dokter', 'konsuls.*')
+             ->orderBy('konsuls.tgl_konsultasi', 'desc');
+     
+         if ($search) {
+             $query->where('users.nama', 'LIKE', "%{$search}%")
+                 ->orWhere('dokter.nama', 'LIKE', "%{$search}%")
+                 ->orWhere('konsuls.tgl_konsultasi', 'LIKE', "%{$search}%")
+                 ->orWhere('konsuls.konsultasi', 'LIKE', "%{$search}%");
+         }
+     
+         $data = $query->orderBy('tgl_konsultasi', 'desc')->get();
+     
+         return view('admin.daftar-konsultasi', compact('data', 'search'));
+     }
+     
     public function hasil_konsultasi($id)
     {
         $catatan = DB::table('catatan_dokters')
