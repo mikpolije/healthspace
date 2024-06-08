@@ -6,7 +6,7 @@
     "license": "MIT",
     "require": {
         "php": "^8.0.2",
-        "barryvdh/laravel-dompdf": "^2.1",
+        "barryvdh/laravel-dompdf": "^2.2",
         "cviebrock/eloquent-sluggable": "^9.0",
         "doctrine/orm": "^2.19",
         "guzzlehttp/guzzle": "^7.8",
@@ -73,4 +73,6 @@
     },
     "minimum-stability": "stable",
     "prefer-stable": true
+
+    
 }
