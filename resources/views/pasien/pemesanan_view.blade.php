@@ -54,14 +54,7 @@
                             <p class="text-white">Pastikan kamu mengecek kembali metode pembayaranmu untuk menghindari
                                 adanya kesalahan transfer.</p>
                         </div>
-                        <div class="col-3 text-center">
-                            <i class='bx bx-money text-center fw-bold text-white' style="font-size:44px;"></i>
-                        </div>
-                        <div class="col-9">
-                            <h6 class="fw-bold text-white">Cek kembali metode pembayaranmu</h6>
-                            <p class="text-white">Pastikan kamu mengecek kembali metode pembayaranmu untuk menghindari
-                                adanya kesalahan transfer.</p>
-                        </div>
+                        
                     </div>
                 </div>
             </div>

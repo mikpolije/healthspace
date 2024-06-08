@@ -21,7 +21,7 @@
                             <th>No</th>
                             <th>Nama</th>
                             <th>Kode Pembayaran</th>
-                            <th>Jumlah Pembayaran</th>
+                            <th>harga</th>
                             <th>Metode Pembayaran</th>
                      
                             <th>Status Pembayaran</th>
