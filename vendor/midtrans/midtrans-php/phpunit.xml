@@ -23,7 +23,7 @@
         </testsuite>
     </testsuites>
     <php>
-        <env name="SERVER_KEY" value="Mid-server-jqjEGQ6xOduDm278qtj4Eez_"/>
-        <env name="CLIENT_KEY" value="Mid-client-CR3stOw0sihvBdk_"/>
+        <env name="SERVER_KEY" value="Mid-server-RnsyQkYSgRAv4uBH3Fsqg-zh"/>
+        <env name="CLIENT_KEY" value="Mid-client-pTd69JtuBFGc-qov"/>
     </php>
 </phpunit>
