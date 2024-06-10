@@ -60,7 +60,7 @@
 
 
 
- <script src="https://app.midtrans.com/snap/snap.js" data-client-key="Mid-client-CR3stOw0sihvBdk_"></script>
+ <script src="https://app.midtrans.com/snap/snap.js" data-client-key="Mid-client-pTd69JtuBFGc-qov"></script>
 
         <script type="text/javascript">
             document.getElementById('pay-button').onclick = function(){

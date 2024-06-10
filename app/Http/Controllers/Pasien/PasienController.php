@@ -19,7 +19,7 @@ class PasienController extends Controller
     protected function initPaymentGateway()
     {
 	// Set your Merchant Server Key
-	\Midtrans\Config::$serverKey = 'Mid-server-jqjEGQ6xOduDm278qtj4Eez_';
+	\Midtrans\Config::$serverKey = 'Mid-server-RnsyQkYSgRAv4uBH3Fsqg-zh';
 	// Set to Development/Sandbox Environment (default). Set to true for Production Environment (accept real transaction).
 	\Midtrans\Config::$isProduction = true;
 	// Set sanitization on (default)
@@ -49,7 +49,7 @@ class PasienController extends Controller
             'enable_payments' => ['credit_card', 'mandiri_clickpay', 'cimb_clicks',
                                 'bca_klikbca', 'bca_klikpay', 'bri_epay', 'echannel', 'permata_va',
                                 'bca_va', 'bni_va', 'other_va', 'gopay', 'indomaret',
-                                'danamon_online', 'akulaku'],
+                                'danamon_online', 'akulaku', 'qris'],
             'transaction_details' => [
                 'order_id' => $Order_id,
                 'gross_amount' => '20000',
@@ -120,7 +120,7 @@ class PasienController extends Controller
 public function notification_payment(Request $request){
      //setting key server midtrans ya
         // Set your Merchant Server Key
-        \Midtrans\Config::$serverKey = 'Mid-server-jqjEGQ6xOduDm278qtj4Eez_';
+        \Midtrans\Config::$serverKey = 'Mid-server-RnsyQkYSgRAv4uBH3Fsqg-zh';
         // Set to Development/Sandbox Environment (default). Set to true for Production Environment (accept real transaction).
         \Midtrans\Config::$isProduction = true;
         // Set sanitization on (default)

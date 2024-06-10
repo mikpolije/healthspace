@@ -85,7 +85,7 @@ class DashboardPasienController extends Controller
 
     protected function initPaymentGateway()
     {
-        \Midtrans\Config::$serverKey = 'Mid-server-jqjEGQ6xOduDm278qtj4Eez_';
+        \Midtrans\Config::$serverKey = 'Mid-server-RnsyQkYSgRAv4uBH3Fsqg-zh';
         \Midtrans\Config::$isProduction = true;
         \Midtrans\Config::$isSanitized = true;
         \Midtrans\Config::$is3ds = true;
@@ -115,7 +115,7 @@ class DashboardPasienController extends Controller
             'enable_payments' => ['credit_card', 'mandiri_clickpay', 'cimb_clicks',
                                 'bca_klikbca', 'bca_klikpay', 'bri_epay', 'echannel', 'permata_va',
                                 'bca_va', 'bni_va', 'other_va', 'gopay', 'indomaret',
-                                'danamon_online', 'akulaku'],
+                                'danamon_online', 'akulaku', 'qris'],
             'transaction_details' => [
                 'order_id' => $Order_id,
                 'gross_amount' => Dokter::where('user_id',$request->dokter_id)->first()->biaya_layanan,
