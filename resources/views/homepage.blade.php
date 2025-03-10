@@ -70,7 +70,7 @@
       <div class="row">
         <div class="col-lg-6 d-lg-flex flex-lg-column justify-content-center align-items-stretch pt-5 pt-lg-0 order-2 order-lg-1" data-aos="fade-up">
           <div>
-            <h1>Klinik Fanda Berkat Medika Panti</h1>
+            <h1>Klinik Fanda Merpati</h1>
             <h2></h2>
             <a href="login" class="download-btn"><i class="fa-solid fa-comments"></i>HealthSpace Telemedicine</a>
           </a>
