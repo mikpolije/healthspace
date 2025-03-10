@@ -43,7 +43,7 @@
     <div class="container d-flex align-items-center justify-content-between">
 
       <div class="logo">
-        <h1><a href="index.html">Klinik FBM Panti</a></h1>
+        <h1><a href="index.html">Klinik Mudafiq</a></h1>
         <!-- Uncomment below if you prefer to use an image logo -->
         <!-- <a href="index.html"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
       </div>
@@ -70,7 +70,7 @@
       <div class="row">
         <div class="col-lg-6 d-lg-flex flex-lg-column justify-content-center align-items-stretch pt-5 pt-lg-0 order-2 order-lg-1" data-aos="fade-up">
           <div>
-            <h1>Klinik Fanda Merpati</h1>
+            <h1>Klinik Fanda Berkat Medika Panti</h1>
             <h2></h2>
             <a href="login" class="download-btn"><i class="fa-solid fa-comments"></i>HealthSpace Telemedicine</a>
           </a>
