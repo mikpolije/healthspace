@@ -93,7 +93,7 @@
 
         <div class="section-title">
           <h2>Tentang Klinik</h2>
-          <p>Klinik Fanda Berkat Medika Panti adalah salah satu unit pelayanan kesehatan yang menyediakan layanan medis kepada masyarakat. 
+          <p>Klinik Fanda Berkat Medika Panti Edited by Mudafiq adalah salah satu unit pelayanan kesehatan yang menyediakan layanan medis kepada masyarakat. 
             Klinik ini bertujuan untuk memberikan pelayanan kesehatan yang berkualitas dan terjangkau bagi masyarakat sekitar. 
             Dengan tenaga medis yang profesional dan berpengalaman, serta fasilitas yang memadai, klinik ini berkomitmen untuk memberikan 
             pelayanan yang terbaik bagi setiap pasien yang datang.</p>
